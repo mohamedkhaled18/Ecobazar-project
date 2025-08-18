@@ -1,0 +1,109 @@
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  height: calc(100vh - 102px);
+}
+
+.container form {
+  box-shadow: var(--box-shadow);
+  padding: 24px;
+  border-radius: 7px;
+  width: 520px;
+  text-align: center;
+  background-color: white;
+}
+
+.container form a {
+  color: black !important;
+}
+
+.container form > h2 { 
+  margin-bottom: 20px;
+}
+
+.container form .input-data > div input:not(input[type="checkbox"]) {
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid var(--input-border);
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  outline: 0;
+  caret-color: var(--primary-green-color);
+}
+
+.container form .input-data > div input:not(input[type="checkbox"]):invalid {
+  border-color: var(--invalid-color);
+}
+
+.container form .input-data .password-input {
+  position: relative;
+}
+
+.container form .input-data .password-input .pass-icon {
+  position: absolute;
+  top: calc(45px / 2);
+  transform: translateY(-50%);
+  right: 16px;
+  cursor: pointer;
+}
+
+.container form .input-data > div input::placeholder {
+  color: var(--input-placeholder);
+  font-family: "Poppins", sans-serif;
+}
+
+.container form .remember-forget {
+  display: flex;
+  justify-content: center;
+}
+
+.container form .remember-forget .forget_pass a {
+  margin-left: auto;
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+.container form .remember-forget .forget_pass a:hover {
+  text-decoration: underline;
+}
+
+button[type="submit"] {
+  background-color: var(--primary-green-color);
+  color: white;
+  border: 0;
+  width: 100%;
+  padding: 8px;
+  font-weight: 500;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 25px;
+  font-family: "Poppins", sans-serif;
+  margin: 20px 0;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--dark-green);
+}
+
+button[type="submit"] + p > a:hover{
+  text-decoration: underline;
+}
+
+.invalid{ 
+  color: var(--invalid-color);
+  display: none;
+}
+.show {
+  display: block;
+}
+
+.disabled {
+  opacity: .4;
+}
+
+.container form p {
+  text-align: center;
+}

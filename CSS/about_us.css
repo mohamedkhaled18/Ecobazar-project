@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+
+/* Normal Style */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: color 0.4s;
+}
+
+*::-webkit-scrollbar {
+  scrollbar-width: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --primary-green-color: #22c55e;
+  --dark-green: #16a34a;
+  --body-background: #fff;
+  --card-background: #2b2b2b;
+  --btn-background: #f9f9f9;
+  --primary-color: #002603;
+  --secondary-color: #808080; 
+}
+
+
+/* Main Body */
+.container {
+  padding: 1.5rem 0;
+}
+
+.section {
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  gap: 30px;
+}
+
+.section:nth-of-type(even) {
+  flex-direction: row-reverse;
+  padding-inline: 60px;
+}
+
+.section > div {
+  flex-basis: 50%;
+}
+
+.section > div > img,
+.section .cover video {
+  width: 100%;
+}
+
+.section .feature-header { color: var(--primary-green-color); }
+.section p.info { 
+  color: var(--secondary-color);
+  margin-block: 1rem;
+}
+
+/* Section One */
+.section-one {
+  justify-content: center;
+  flex-direction: row;
+}
+
+.section-one .features {
+  display: flex;
+  gap: 30px;
+  text-align: left;
+}
+
+.section-one .features .feature {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  padding: 20px 0;
+  color: var(--primary-color);
+}
+
+
+/* Section Two */
+.section-two .cover video { border-radius: 20px 0 20px 0;}
+
+/* Section Three */
+.section-three .feature {
+  display: flex;
+  gap: 10px;
+  color: var(--primary-color);
+  margin-block: 0.75rem;
+}
+
+.section-three .feature .icon {
+  color: var(--primary-green-color);
+}
+
+
+.toggle-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.toggle-header .arrow {
+  font-size: 1.5rem;
+  color: var(--primary-green-color);
+  transition: transform 0.3s ease;
+}
+
+.toggle-header.open .arrow {
+  transform: rotate(180deg);
+}
+
+.toggle-text {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.6s ease, opacity 0.6s ease;
+}
+
+.toggle-text.show {
+  max-height: 500px;
+  max-width: 700px;
+  opacity: 1;
+}
+.feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 10px;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.6s ease, opacity 0.6s ease;
+}
+
+.toggle-text.show .feature {
+  opacity: 1;
+  max-height: 100px;
+}
+
+.check-icon {
+  color: var(--primary-green-color);
+  font-size: 1.2rem;
+  margin-top: 3px;
+}
+
+
