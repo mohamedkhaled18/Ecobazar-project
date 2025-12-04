@@ -202,6 +202,18 @@
       <h2>Register</h2>
       <p class="invalid blank-error">Inputs Can Not Be Blank</p>
       <div class="input-data">
+        <div class="first-name-input">
+          <input type="text" placeholder="First name" name="first name" id="first-name">
+          <p class="invalid invalid-first-name">Invalid first name</p>
+        </div>
+        <div class="last-name-input">
+          <input type="text" placeholder="Last name" name="last-name" id="last-name">
+          <p class="invalid invalid-last-name">Invalid last name</p>
+        </div>
+        <div class="username-input">
+          <input type="text" placeholder="Username" name="username" id="username">
+          <p class="invalid invalid-username">Username is invalid</p>
+        </div>
         <div class="email-input">
           <input type="email" placeholder="Email" name="Email" id="email">
           <p class="invalid invalid-email">The email is not written well</p>
@@ -232,6 +244,12 @@
           </svg>
           <p class="invalid mismatch-password">Mismatched Password</p>
         </div>
+        <select name="role" id="role">
+          <option value="owner">Owner</option>
+          <option value="employee">Employee</option>
+          <option value="admin">Admin</option>
+          <option value="customer">Customer</option>
+        </select>
         <div class="aggrement">
           <input type="checkbox" name="" id="confirm">
           <label for="confirm">Accept all terms & Conditions</label>
@@ -273,7 +291,7 @@
     </div>
     <div class="useracc">
       <h3>My Account</h3>
-      <a href="login.html">Sign in</a>
+      <a href="login.html">Log in</a>
       <a href="checkout.html">Check out</a>
       <a href="contact.html">Help</a>
       <a href="register.html">Sign up</a>

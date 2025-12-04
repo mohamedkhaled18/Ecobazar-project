@@ -1,9 +1,8 @@
 const emailInput = document.getElementById("email");
 const passInput = document.getElementById("password");
-const submitBtn = document.querySelector("button[type='submit']");
+const submitBtn = document.querySelector("button");
 const passIcons = document.querySelectorAll(".pass-icon");
 
-// Alerts
 const lengthAlert = document.querySelector(".invalid-length");
 const blankAlert = document.querySelector(".blank-error");
 const emailAlert = document.querySelector(".invalid-email");
@@ -11,7 +10,7 @@ const emailAlert = document.querySelector(".invalid-email");
 let inputs = [emailInput, passInput];
 
 submitBtn.addEventListener("click", (e) => {
-
+  e.preventDefault();
   inputs.forEach(input => {
     checkBlank();
     checkpassword(input);
@@ -21,8 +20,9 @@ submitBtn.addEventListener("click", (e) => {
   // All Are Valid?
   let alerts = document.querySelectorAll(".invalid.show");
   if (alerts.length !== 0) {
-    e.preventDefault();
+    return ;
   }
+  headToPage();
 })
 
 
@@ -57,8 +57,6 @@ function checkBlank() {
 }
 
 
-
-// Toggle Type Of Input
 passIcons.forEach(icon => {
   icon.addEventListener("click", () => togglePass(icon));
 })
@@ -71,3 +69,8 @@ function togglePass(element) {
   input.setAttribute("type", type);
 }
 
+
+function headToPage() {
+  const role = document.getElementById("role").value;
+  window.location.href = role + ".html";
+}

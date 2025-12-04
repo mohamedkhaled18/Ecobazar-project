@@ -199,7 +199,7 @@
 
   <div class="container">
     <form action="">
-      <h2>Sign In</h2>
+      <h2>Log In</h2>
       <div class="input-data">
         <p class="invalid blank-error">Input can not be blank</p>
         <div class="email-input">
@@ -219,13 +219,21 @@
               stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </div>
+        <select name="role" id="role">
+          <option value="owner">Owner</option>
+          <option value="employee">Employee</option>
+          <option value="admin">Admin</option>
+          <option value="customer">Customer</option>
+        </select>
         <div class="remember-forget">
           <div class="forget_pass">
             <a href="" class="">Forget Password</a>
           </div>
         </div>
       </div>
-      <button type="submit">Login</button>
+      <button>
+        Login
+      </button>
       <p class="gray text-center">Don't have account? <a class="" href="./register.html">Register</a></p>
     </form>
 

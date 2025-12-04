@@ -65,7 +65,9 @@ function addDataToHTML() {
 
         newProduct.classList.add('prod');
         newProduct.innerHTML = `
-            <img src="${product.image}">
+            <img src="${currentPage === "index.html" ? product.image.replace(".", "")
+                : product.image
+            }">
         <div class="decsription">
             <a href="${product.linkPage}">${product.name}</a>
             <div class="stars">
@@ -119,9 +121,13 @@ function updateCartHTML() {
         Object.values(listCart).forEach(product => {
             let newItem = document.createElement('div');
             newItem.classList.add('item');
+            const length = window.location.href.split("/").length;
             newItem.innerHTML = `
             <div class="item-image">
-                <img src="${product.image}" alt="">
+                <img src="${
+                    window.location.href.split("/")[length - 1].replace("#", "") === "index.html" ?
+                    product.image.replace(".", "") : product.image
+                }" alt="">
             </div>
             <div class="content">
                 <div class="product-name">${product.name}</div>

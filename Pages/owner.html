@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../CSS/home.css">
+    <link rel="stylesheet" href="../CSS/owner.css">
+  <link rel="stylesheet" href="../CSS/global.css">
+   <title>Ecobazar | Owner</title>
+  <link rel="shortcut icon" href="../materials/Screenshot 2025-05-03 235020.png" type="image/x-icon">
+  	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <!-- Logo -->
+    <div class="logo">
+      <a href="../index.html">
+        <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M31.2749 4.84308C27.4022 4.84308 21.9311 5.16711 19.1352 7.96154C17.9247 9.17204 17.3202 11.1454 17.4771 13.3789C17.4975 13.674 17.6937 13.9253 17.9756 14.0184C18.256 14.1099 18.5641 14.0241 18.7559 13.7989C20.3108 11.9694 22.2435 10.5032 24.5046 9.4409C24.6964 9.34935 24.9231 9.34206 25.1295 9.41474C25.3111 9.48013 25.4535 9.60363 25.5276 9.76207C25.6816 10.0876 25.6322 10.5163 25.1207 10.7575C25.0917 10.772 25.0655 10.7909 25.0365 10.804C25.0263 10.8083 25.0147 10.8069 25.006 10.8113C19.4346 13.4299 16.6954 17.9986 15.4514 22.6966C14.5446 16.8143 12.6294 13.3514 10.8202 11.2254C9.51095 9.52816 8.22341 8.62861 7.47943 8.12005C7.34136 8.02557 6.92435 7.74077 6.7514 7.56782C6.46803 7.28445 6.46803 6.82378 6.7514 6.54041C7.03477 6.25848 7.49687 6.25848 7.81218 6.57236C7.88923 6.64068 8.01272 6.72787 8.16966 6.8325L8.29902 6.91969C9.35108 7.64043 11.31 8.97879 13.0479 11.8604C13.2034 12.1176 13.5042 12.2557 13.7963 12.2005C14.0928 12.1481 14.3252 11.92 14.3834 11.625C14.7627 9.68796 14.5927 6.81356 12.8649 5.08578C10.069 2.29278 4.59789 1.96875 0.726671 1.96875C0.32553 1.96868 0 2.29421 0 2.69528C0 6.56793 0.324032 12.0391 3.11846 14.835C4.28387 16.0004 6.08147 16.5236 7.86736 16.5236C9.32486 16.5236 10.7533 16.1588 11.8476 15.5267C13.3399 18.619 14.5316 23.2386 14.5316 30.3053C14.5316 30.7064 14.8571 31.0319 15.2582 31.0319C15.6592 31.0319 15.9848 30.7064 15.9848 30.3053C15.9848 26.3629 16.6605 21.6314 19.173 17.7369C20.18 18.7207 21.9137 19.3441 23.8347 19.4022C23.9306 19.4052 24.0251 19.4066 24.1195 19.4066C26.0711 19.4066 27.796 18.7948 28.8815 17.7078C31.6773 14.912 31.9999 9.44083 31.9999 5.56811C32.0015 5.16711 31.6774 4.84308 31.2749 4.84308Z"
+            fill="#00B307" />
+        </svg>
+        <span>Ecobazar</span>
+      </a>
+    </div>
+    <!-- Naigation Bar -->
+    <nav>
+      <!-- Search Box -->
+      <!-- <div class="search-box">
+        <div class="search-icon">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <input type="text" placeholder="search" class="search" onkeyup="search()">
+        <div class="prods-search">
+          <div class="prodsresult">
+            <a href="./banana.html" class="item">
+              <img src="../materials/Yellow-Banana-1-Kg.jpg">
+              <div class="prod-details">
+                Fresh banana
+              </div>
+            </a>
+          </div>
+          <div class="prodsresult">
+            <a href="./cucmber.html" class="item">
+              <img src="../materials/cucmber.jpg">
+              <div class="prod-details">
+                Fresh cucmber
+              </div>
+            </a>
+          </div>
+          <div class="prodsresult">
+            <a href="./mixedfruits.html" class="item">
+              <img src="../materials/mixedfruits.jpg">
+              <div class="prod-details">
+                Mixed fruits
+              </div>
+            </a>
+          </div>
+          <div class="prodsresult">
+            <a href="./frozenberries.html" class="item">
+              <img src="../materials/frozenberries.jpg">
+              <div class="prod-details">
+                Frozen berries
+              </div>
+            </a>
+          </div>
+          <div class="prodsresult">
+            <a href="./cannedpineapple.html" class="item">
+              <img src="../materials/cannedpineapple.jpg">
+              <div class="prod-details">
+                Canned pineapple
+              </div>
+            </a>
+          </div>
+          <div class="prodsresult">
+            <a href="./orange.html" class="item">
+              <img src="../materials/Orange-Valencia-1-Kg.jpg">
+              <div class="prod-details">
+                Fresh orange
+              </div>
+            </a>
+          </div>
+          <div class="prodsresult">
+            <a href="./straw.html" class="item">
+              <img src="../materials/straww.png">
+              <div class="prod-details">
+                Fresh strawberry
+              </div>
+            </a>
+          </div>
+          <div class="prodsresult">
+            <a href="./tomato.html" class="item">
+              <img src="../materials/tomato.jpg">
+              <div class="prod-details">
+                Fresh tomato
+              </div>
+            </a>
+          </div>
+          <div class="prodsresult">
+            <a href="./onions.html" class="item">
+              <img src="../materials/onions.jpg">
+              <div class="prod-details">
+                Fresh onions
+              </div>
+            </a>
+          </div>
+          <div class="prodsresult">
+            <a href="./pepper.html" class="item">
+              <img src="../materials/pepper.jpeg">
+              <div class="prod-details">
+                Fresh pepper
+              </div>
+            </a>
+          </div>
+          <div class="prodsresult">
+            <a href="./lettuce.html" class="item">
+              <img src="../materials/lettuce.jpg">
+              <div class="prod-details">
+                Fresh lettuce
+              </div>
+            </a>
+          </div>
+          <div class="prodsresult">
+            <a href="./driedfruits.html" class="item">
+              <img src="../materials/dried fruits.jpg">
+              <div class="prod-details">
+                Dried fruits
+              </div>
+            </a>
+          </div>
+        </div>
+      </div> -->
+      <!-- <div class="pages-section">
+        <ul>
+          <li><a class="active" href="../index.html">HOME</a></li>
+          <li><a href="shopping.html">SHOP</a></li>
+          <li><a href="about_us.html">ABOUT US</a></li>
+          <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+      </div> -->
+      <div class="sign-cart" style="padding: 0 0 0 1000px;">
+        <ul>
+          <li>
+            <a href="../index.html">
+              <i class="fa-solid fa-right-from-bracket"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa-solid fa-bell"></i>
+            </a>
+          </li>
+          <li>
+            <a href="contact.html">
+              <i class="fa-solid fa-envelope"></i>
+            </a>
+          </li>         
+          <li>
+            <a href="#">
+              <i class="fa-solid fa-user"></i>
+            </a>
+          </li>
+          <!-- <li> -->
+            <!-- <div class="cart">
+              <a href="#">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </a>
+              <span class="cart-length">0</span>
+            </div> -->
+          <!-- </li> -->
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <div id="content">
+   <main>
+    <div class="head-title">
+        <div class="left">
+            <h1>Dashboard</h1>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li><i class='bx bx-chevron-right' ></i></li>
+                <li>
+                    <a class="active" href="../index.html">Home</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <ul class="box-info">
+        <li>
+            <i class='bx bxs-calendar-check' ></i>
+            <span class="text">
+                <h3>1948</h3>
+                <p>New Order</p>
+            </span>
+        </li>
+        <li>
+            <i class='bx bxs-group' ></i>
+            <span class="text">
+                <h3>3654</h3>
+                <p>Visitors</p>
+            </span>
+        </li>
+        <li>
+            <i class='bx bxs-dollar-circle' ></i>
+            <span class="text">
+                <h3>$25430</h3>
+                <p>Total Sales</p>
+            </span>
+        </li>
+        <li>
+            <i class='bx bxs-comment'></i>
+            <span class="text">
+                <h3>697</h3>
+                <p>Comments</p>
+            </span>
+        </li>       
+    </ul>
+
+
+    <div class="table-data">
+        <div class="order">
+            <div class="head">
+                <h3>Recent Orders</h3>
+                <i class='bx bx-search' ></i>
+                <i class='bx bx-filter' ></i>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Date Order</th>
+                        <th>Order Contents</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <img src="../materials/people3.png">
+                            <p>Laila Al-Zahrani</p>
+                        </td>
+                        <td>Laila695@gmail.com</td>
+                        <td>21 Al-Bahr St, Al-Salam Bldg, Tanta</td>
+                        <td>08-12-2025</td>
+                        <td>3 kilos Fresh cucmber</td>
+                        <td><span class="status completed">Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="../materials/people1.jpg">
+                            <p>Sara Al-Mohammedi</p>
+                        </td>
+                        <td>sarass6756@gmail.com</td>
+                        <td>23 Al-Nasr St, Bldg 5, Nasr City, Cairo</td>
+                        <td>01-12-2025</td>
+                        <td>1 kilo Fresh banana</td>
+                        <td><span class="status pending">Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="../materials/people5.jpg">
+                            <p>Saif Mansour</p>
+                        </td>
+                        <td>saifhie2586@gmail.com</td>
+                        <td>117 Al-Tahrir St, Al-Andalus Bldg, Dokki, Giza</td>
+                        <td>29-11-2025</td>
+                        <td>1 Frozen berries</td>
+                        <td><span class="status process">Process</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="../materials/people2.png">
+                            <p>Youssef Al-Haddad</p>
+                        </td>
+                        <td>youss962455@gmail.com</td>
+                        <td>6 Al-Zohour Bldgs, Bldg B, Smouha, Alexandria</td>
+                        <td>06-12-2025</td>
+                        <td>1 Canned pineapple</td>
+                        <td><span class="status pending">Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="../materials/people4.png">
+                            <p>Karim Ahmed</p>
+                        </td>
+                        <td>karimhor3506@gmail.com</td>
+                        <td>45 Al-Gomhoria St, Al-Shams Bldg, Mansoura</td>
+                        <td>30-11-2025</td>
+                        <td>2 kilos Fresh strawberry</td>
+                        <td><span class="status completed">Completed</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    <div class="table-data">
+        <div class="admin">
+            <div class="head">
+                <h3>Admins</h3>
+                <i class='bx bx-plus' ></i>
+                <i class='bx bx-filter' ></i>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Admin</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Employment Date</th>
+                        <th>Remove</th>
+                        <th>More Information</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <img src="../materials/admin1.jpg">
+                            <p>Omar Al-Saeed</p>
+                        </td>
+                        <td><p>01069732649</p></td>
+                        <td><p>omarrr9645@gmail.com</p></td>
+                        <td><p>28/9/2021</p></td>
+                        <td><i class="fa-solid fa-delete-left"></i></td>
+                        <td><i class="fa-solid fa-circle-info"></i></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="../materials/admin2.jpg">
+                            <p>Mohammed Soliman</p>
+                        </td>
+                        <td><p>01167325488</p></td>
+                        <td><p>mohsol788@gmail.com</p></td>
+                        <td><p>21/2/2023</p></td>
+                        <td><i class="fa-solid fa-delete-left"></i></td>
+                        <td><i class="fa-solid fa-circle-info"></i></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="../materials/admin3.jpg">
+                            <p>Ashraf Hassan</p>
+                        </td>
+                        <td><p>011116732599</p></td>
+                        <td><p>ashraffh64578@gmail.com</p></td>
+                        <td><p>14/12/2024</p></td>
+                        <td><i class="fa-solid fa-delete-left"></i></td>
+                        <td><i class="fa-solid fa-circle-info"></i></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="../materials/admin4.jpg">
+                            <p>Hend Mohammed</p>
+                        </td>
+                        <td><p>01226497832</p></td>
+                        <td><p>hendhy7865@gmail.com</p></td>
+                        <td><p>26/5/2022</p></td>
+                        <td><i class="fa-solid fa-delete-left"></i></td>
+                        <td><i class="fa-solid fa-circle-info"></i></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="../materials/admin5.jpg">
+                            <p>Ibrahim Ali</p>
+                        </td>
+                        <td><p>01546732548</p></td>
+                        <td><p>ibrahimh6735@gmail.com</p></td>
+                        <td><p>03/7/2025</p></td>
+                        <td><i class="fa-solid fa-delete-left"></i></td>
+                        <td><i class="fa-solid fa-circle-info"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+ </main>
+</div>
+  <!-- Cart List -->
+  <!-- <div class="dark-background"></div>
+  <div class="cart-list">
+    <div class="top-section">
+      <h2>Cart</h2>
+      <div class="close">
+        <i class="fa-solid fa-xmark"></i>
+      </div>
+    </div>
+    <div class="container-items" style="position: relative;">
+      <div class="items">
+        <div class="item">
+          <div class="item-image">
+            <img src="" alt="">
+          </div>
+          <div class="item-info">
+            <div class="item-name">Item name</div>
+            <div class="item-price">price</div>
+          </div>
+          <div class="item-counter">
+            <span>-</span>
+            <span>0</span>
+            <span>+</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="./checkout.html" class="checkout">Checkout</a>
+  </div> -->
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="contacts">
+      <h3>Contacts</h3>
+      <p><strong>Adress:</strong> 88 october road, nasr city, cairo , egypt</p>
+      <p><strong>Phone:</strong> +20 1198 7456 23/+20 1256 9743 65</p>
+      <p><strong>Work hours:</strong> 9:00 am-9:00 pm/SUN-THU</p>
+      <div class="socialmedia">
+        <h5>Follow us</h5>
+        <div class="links">
+          <i class="fab facebook fa-facebook-f"></i>
+          <i class="fab twitter fa-twitter"></i>
+          <i class="fab instagram fa-instagram"></i>
+          <i class="fab youtube fa-youtube"></i>
+        </div>
+      </div>
+    </div>
+    <div class="about">
+      <h3>About</h3>
+      <a href="about_us.html">About us</a>
+      <a href="#">Terms & Conditions</a>
+      <a href="#">Privacy Policy</a>
+      <a href="contact.html">Contact us</a>
+    </div>
+    <div class="useracc">
+      <h3>My Account</h3>
+      <a href="login.html">Sign in</a>
+      <a href="checkout.html">Check out</a>
+      <a href="contact.html">Help</a>
+      <a href="register.html">Sign up</a>
+    </div>
+    <div class="app">
+      <h3>Our App</h3>
+      <p>Download it now from</p>
+      <div class="install">
+        <img src="../materials/play.jpg" alt="google play">
+        <img src="../materials/app.jpg" alt="app store">
+      </div>
+      <p>Multiple secured payment</p>
+      <img src="../materials/pay.png" alt="payment">
+    </div>
+    <div class="copyrights">
+      © 2025 Ecobazar. All rights reserved.
+    </div>
+  </footer>
+
+
+  <div class="scroll-up">
+    <a>
+      <i class="fa-solid fa-arrow-up"></i>
+    </a>
+  </div>
+
+  <script src="../JS/javascript.js"></script>
+  <script src="../JS/checkout.js"></script>
+
+</body>
+
+</html>

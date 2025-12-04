@@ -70,3 +70,62 @@ window.addEventListener('storage', function (event) {
     }
 });
 
+// Payment
+const cardNumberInput = document.getElementById("card-number");
+cardNumberInput.addEventListener("keyup", (e) => {
+    let input = e.currentTarget.value;
+    let numbers = input.replace(/\s/g, "");
+    let isValidLength = numbers.length < 16 && numbers.length > 0;
+    if (numbers.length % 4 == 0 && isValidLength) {
+        e.currentTarget.value += " ";
+    }
+})
+
+document.querySelector(".buttonCheckout").addEventListener("click", (e) => {
+    if (!checkCard()) {
+        e.preventDefault();
+    }
+});
+
+function checkCard() {
+    const cardNumber = document.getElementById("card-number").value.replace(/\s/g, "");
+    const cvcNumber = document.getElementById("cvc-number").value.trim();
+    const expireYearInput = parseInt(document.getElementById("expirey-year-date").value, 10);
+    const expireMonthInput = parseInt(document.getElementById("expirey-month-date").value, 10);
+
+    let valid = true;
+
+    // Card number: must be exactly 16 digits
+    if (cardNumber.length != 16) {
+        document.getElementById("card-number").classList.add("error-input");
+        valid = false;
+    } else {
+        document.getElementById("card-number").classList.remove("error-input");
+    }
+
+    if (cvcNumber.length != 3) {
+        document.getElementById("cvc-number").classList.add("error-input");
+        valid = false;
+    } else {
+        document.getElementById("cvc-number").classList.remove("error-input");
+    }
+
+
+    if (expireMonthInput < 1 || expireMonthInput > 12) {
+        document.getElementById("expirey-month-date").classList.add("error-input");
+        valid = false;
+    } else {
+        document.getElementById("expirey-month-date").classList.remove("error-input");
+    }
+
+    
+    const currentYear = new Date().getFullYear();
+    if (expireYearInput < currentYear || expireYearInput > currentYear + 10) {
+        document.getElementById("expirey-year-date").classList.add("error-input");
+        valid = false;
+    } else {
+        document.getElementById("expirey-year-date").classList.remove("error-input");
+    }
+
+    return valid;
+}

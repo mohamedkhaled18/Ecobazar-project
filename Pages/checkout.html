@@ -202,15 +202,8 @@
   </section>
   <div class="chekoutfield">
     <div class="checkoutLayout">
-      <div class="leftCart">
-        <h1>Your Cart</h1>
-        <div class="list"></div>
-        <div class="cart-totals">
-          <div class="total-items">Total items: <span class="totalQuantity">0</span></div>
-          <div class="total-price">Total price: <span class="totalPrice">$0.00</span></div>
-        </div>
-      </div>
-      <div class="right">
+
+            <div class="right">
         <h1>Checkout</h1>
 
         <div class="form">
@@ -256,6 +249,9 @@
             </select>
           </div>
         </div>
+        <div class="coupon-input">
+          <input type="text" placeholder="Coupon" />
+        </div>
         <div class="return">
           <div class="row">
             <div>Total Quantity</div>
@@ -266,8 +262,34 @@
             <div class="totalPrice">$0</div>
           </div>
         </div>
-        <button class="buttonCheckout">CHECKOUT</button>
+        <form class="card-payment">
+          <h1>Pay by card</h1>
+          <div class="card-number">
+            <label for="card-number">Card Number</label>
+            <input type="text" id="card-number" placeholder="Type card number"/>
+          </div>
+          <div class="cvc-number">
+            <label for="cvc-number">CVC Number</label>
+            <input type="text" id="cvc-number" placeholder="Type CVC"/>
+          </div>
+          <div class="expirey-date">
+            <label for="expirey-date">expirey-date</label>
+            <input type="number" id="expirey-month-date" min="1" max="12" step="1" placeholder="MM"/>
+            <span>/</span>
+            <input type="number" id="expirey-year-date" placeholder="YYYY"/>
+          </div>
+          <button class="buttonCheckout" type="submit">CHECKOUT</button>
+        </form>
       </div>
+      <div class="leftCart">
+        <h1>Your Cart</h1>
+        <div class="list"></div>
+        <div class="cart-totals">
+          <div class="total-items">Total items: <span class="totalQuantity">0</span></div>
+          <div class="total-price">Total price: <span class="totalPrice">$0.00</span></div>
+        </div>
+      </div>
+
     </div>
   </div>
   <footer class="footer">

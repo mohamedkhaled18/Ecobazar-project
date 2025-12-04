@@ -37,7 +37,7 @@
         <input type="text" placeholder="search" class="search" onkeyup="search()">
         <div class="prods-search">
           <div class="prodsresult">
-            <a href="././Pages/banana.html" class="item">
+            <a href="./Pages/banana.html" class="item">
               <img src="./materials/Yellow-Banana-1-Kg.jpg">
               <div class="prod-details">
                 Fresh banana
@@ -45,7 +45,7 @@
             </a>
           </div>
           <div class="prodsresult">
-            <a href="././Pages/cucmber.html" class="item">
+            <a href="./Pages/cucmber.html" class="item">
               <img src="./materials/cucmber.jpg">
               <div class="prod-details">
                 Fresh cucmber
@@ -53,7 +53,7 @@
             </a>
           </div>
           <div class="prodsresult">
-            <a href="././Pages/mixedfruits.html" class="item">
+            <a href="./Pages/mixedfruits.html" class="item">
               <img src="./materials/mixedfruits.jpg">
               <div class="prod-details">
                 Mixed fruits
@@ -61,7 +61,7 @@
             </a>
           </div>
           <div class="prodsresult">
-            <a href="././Pages/frozenberries.html" class="item">
+            <a href="./Pages/frozenberries.html" class="item">
               <img src="./materials/frozenberries.jpg">
               <div class="prod-details">
                 Frozen berries
@@ -69,7 +69,7 @@
             </a>
           </div>
           <div class="prodsresult">
-            <a href="././Pages/cannedpineapple.html" class="item">
+            <a href="./Pages/cannedpineapple.html" class="item">
               <img src="./materials/cannedpineapple.jpg">
               <div class="prod-details">
                 Canned pineapple
@@ -77,7 +77,7 @@
             </a>
           </div>
           <div class="prodsresult">
-            <a href="././Pages/orange.html" class="item">
+            <a href="./Pages/orange.html" class="item">
               <img src="./materials/Orange-Valencia-1-Kg.jpg">
               <div class="prod-details">
                 Fresh orange
@@ -85,7 +85,7 @@
             </a>
           </div>
           <div class="prodsresult">
-            <a href="././Pages/straw.html" class="item">
+            <a href="./Pages/straw.html" class="item">
               <img src="./materials/straww.png">
               <div class="prod-details">
                 Fresh strawberry
@@ -93,7 +93,7 @@
             </a>
           </div>
           <div class="prodsresult">
-            <a href="././Pages/tomato.html" class="item">
+            <a href="./Pages/tomato.html" class="item">
               <img src="./materials/tomato.jpg">
               <div class="prod-details">
                 Fresh tomato
@@ -101,7 +101,7 @@
             </a>
           </div>
           <div class="prodsresult">
-            <a href="././Pages/onions.html" class="item">
+            <a href="./Pages/onions.html" class="item">
               <img src="./materials/onions.jpg">
               <div class="prod-details">
                 Fresh onions
@@ -195,7 +195,7 @@
         </div>
       </div>
     </div>
-    <a href="././Pages/checkout.html" class="checkout">Checkout</a>
+    <a href="./Pages/checkout.html" class="checkout">Checkout</a>
   </div>
 
   <!-- Intro -->
@@ -208,19 +208,19 @@
     <div class="stats">
       <div class="stat">
         <span class="number">
-          <span data-stat="11" class="stat-number"></span>K+
+          <span data-stat="11" class="stat-number">11</span>K+
         </span>
         <span class="desc">SOLD PRODUCTS</span>
       </div>
       <div class="stat">
         <span class="number">
-          <span data-stat="25" class="stat-number"></span>K+
+          <span data-stat="25" class="stat-number">25</span>K+
         </span>
         <span class="desc">HAPPY CUSTOMERS</span>
       </div>
       <div class="stat">
         <span class="number">
-          <span data-stat="6" class="stat-number"></span>+
+          <span data-stat="6" class="stat-number">6</span>+
         </span>
         <span class="desc">STORE LOCATIONS</span>
       </div>
@@ -363,38 +363,6 @@
 
   <script src="./JS/javascript.js"></script>
   <script src="./JS/checkout.js"></script>
-  <script>
-
-    window.addEventListener("load", () => {
-      // let visitedCount = sessionStorage.getItem("visited") ? sessionStorage.getItem("visited") : 0;
-      let stats = document.querySelectorAll(".stat .number .stat-number");
-      stats.forEach(stat => {
-        let counter = setInterval(() => {
-          if (stat.innerHTML == stat.dataset.stat)
-            clearInterval(counter);
-          else
-            stat.innerHTML++;
-        }, 150);
-      });
-    });
-
-    /*
-    stats.forEach(stat => {
-        if (visitedCount === 0) {
-          let counter = setInterval(() => {
-            if (stat.innerHTML == stat.dataset.stat)
-              clearInterval(counter);
-            else
-              stat.innerHTML++;
-          }, 100);
-        } else stat.innerHTML = stat.dataset.stat;
-      });
-      visitedCount++;
-      sessionStorage.setItem("visited", visitedCount);
-    });
-    */
-
-  </script>
 </body>
 
 </html>

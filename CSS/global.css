@@ -29,6 +29,11 @@ html {
   --gray-600: #666666;
 }
 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
 
 body {
   min-height: 100vh;

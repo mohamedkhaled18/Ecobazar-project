@@ -24,7 +24,8 @@ img {
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  height: calc(100vh - 102px);
+  min-height:100vh;
+  margin: 2rem 0 5rem 0;
 }
 
 .container form {
@@ -124,3 +125,13 @@ button[type="submit"]:hover {
   text-align: left;
 }
 
+.container #role {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  outline: 0;
+  border: var(--primary-green-color) 2px solid;
+  border-radius: 7px;
+  font-weight: bold;
+  margin-block: 1rem;
+}
