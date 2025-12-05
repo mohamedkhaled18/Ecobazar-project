@@ -69,7 +69,10 @@ function addDataToHTML() {
                 : product.image
             }">
         <div class="decsription">
-            <a href="${product.linkPage}">${product.name}</a>
+            <a href="${
+                currentPage === "index.html" ?  "./Pages/" + product.linkPage
+                : product.linkPage
+            }">${product.name}</a>
             <div class="stars">
                 <span>★★★★★</span>
                 <span class="numrevs">(${product.numrevs})</span>

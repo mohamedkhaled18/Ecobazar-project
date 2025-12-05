@@ -49,10 +49,11 @@ body {
 }
 
 #content main {
-    width: 100%;
-    padding: 36px 24px;
-    font-family: var(--poppins);
+	width: 100%;
+	padding: 36px 24px;
+	font-family: var(--poppins);
 }
+
 #content main .head-title {
 	display: flex;
 	align-items: center;
@@ -60,24 +61,29 @@ body {
 	grid-gap: 16px;
 	flex-wrap: wrap;
 }
+
 #content main .head-title .left h1 {
 	font-size: 55px;
 	font-weight: 600;
 	margin-bottom: 10px;
 	color: var(--dark);
 }
+
 #content main .head-title .left .breadcrumb {
 	display: flex;
 	align-items: center;
 	grid-gap: 16px;
 }
+
 #content main .head-title .left .breadcrumb li {
 	color: var(--dark);
 }
+
 #content main .head-title .left .breadcrumb li a {
 	color: var(--dark-grey);
 	pointer-events: none;
 }
+
 #content main .head-title .left .breadcrumb li a.active {
 	color: var(--green);
 	pointer-events: unset;
@@ -93,6 +99,7 @@ body {
 	grid-gap: 24px;
 	margin-top: 36px;
 }
+
 #content main .box-info li {
 	padding: 24px;
 	background: var(--light);
@@ -101,6 +108,7 @@ body {
 	align-items: center;
 	grid-gap: 24px;
 }
+
 #content main .box-info li .bx {
 	width: 80px;
 	height: 80px;
@@ -110,29 +118,35 @@ body {
 	justify-content: center;
 	align-items: center;
 }
+
 #content main .box-info li:nth-child(1) .bx {
 	background: var(--light-blue);
 	color: var(--blue);
 }
+
 #content main .box-info li:nth-child(2) .bx {
 	background: var(--light-yellow);
 	color: var(--yellow);
 }
+
 #content main .box-info li:nth-child(3) .bx {
 	background: var(--light-orange);
 	color: var(--orange);
 }
+
 #content main .box-info li:nth-child(4) .bx {
 	background: var(--light-green);
 	color: var(--green);
 }
+
 #content main .box-info li .text h3 {
 	font-size: 24px;
 	font-weight: 600;
 	color: var(--dark);
 }
+
 #content main .box-info li .text p {
-	color: var(--dark);	
+	color: var(--dark);
 }
 
 
@@ -147,23 +161,27 @@ body {
 	width: 100%;
 	color: var(--dark);
 }
-#content main .table-data > div {
+
+#content main .table-data>div {
 	border-radius: 20px;
 	background: var(--light);
 	padding: 24px;
 	overflow-x: auto;
 }
+
 #content main .table-data .head {
 	display: flex;
 	align-items: center;
 	grid-gap: 16px;
 	margin-bottom: 24px;
 }
+
 #content main .table-data .head h3 {
 	margin-right: auto;
 	font-size: 24px;
 	font-weight: 600;
 }
+
 #content main .table-data .head .bx {
 	cursor: pointer;
 }
@@ -172,34 +190,41 @@ body {
 	flex-grow: 1;
 	flex-basis: 500px;
 }
+
 #content main .table-data .order table {
 	width: 100%;
 	border-collapse: collapse;
 }
+
 #content main .table-data .order table th {
 	padding-bottom: 12px;
 	font-size: 13px;
 	text-align: left;
 	border-bottom: 1px solid var(--grey);
 }
+
 #content main .table-data .order table td {
 	padding: 16px 0;
 }
+
 #content main .table-data .order table tr td:first-child {
 	display: flex;
 	align-items: center;
 	grid-gap: 12px;
 	padding-left: 6px;
 }
+
 #content main .table-data .order table td img {
 	width: 36px;
 	height: 36px;
 	border-radius: 50%;
 	object-fit: cover;
 }
+
 #content main .table-data .order table tbody tr:hover {
 	background: var(--grey);
 }
+
 #content main .table-data .order table tr td .status {
 	font-size: 10px;
 	padding: 6px 16px;
@@ -207,37 +232,45 @@ body {
 	border-radius: 20px;
 	font-weight: 700;
 }
+
 #content main .table-data .order table tr td .status.completed {
 	background: var(--blue);
 }
+
 #content main .table-data .order table tr td .status.process {
 	background: var(--yellow);
 }
+
 #content main .table-data .order table tr td .status.pending {
 	background: var(--orange);
 }
+
 #content main .table-data .admin {
 	flex-grow: 1;
 	flex-basis: 500px;
 }
+
 #content main .table-data .admin table {
 	width: 100%;
 	border-collapse: collapse;
 }
+
 #content main .table-data .admin table th {
 	padding-bottom: 12px;
 	font-size: 13px;
 	text-align: left;
 	border-bottom: 1px solid var(--grey);
 }
+
 #content main .table-data .admin table td {
 	padding: 16px 0;
 }
+
 #content main .table-data .admin table td i.fa-delete-left,
 #content main .table-data .admin table td i.fa-circle-info {
-    cursor: pointer;
-    transition: color 0.3s ease;
-    margin-left: 30px;
+	cursor: pointer;
+	transition: color 0.3s ease;
+	margin-left: 30px;
 }
 
 #content main .table-data .admin table td i.fa-delete-left:hover,
@@ -251,15 +284,18 @@ body {
 	grid-gap: 12px;
 	padding-left: 6px;
 }
+
 #content main .table-data .admin table td img {
 	width: 36px;
 	height: 36px;
 	border-radius: 50%;
 	object-fit: cover;
 }
+
 #content main .table-data .admin table tbody tr:hover {
 	background: var(--grey);
 }
+
 #content main .table-data .admin table tr td .status {
 	font-size: 10px;
 	padding: 6px 16px;
@@ -270,4 +306,91 @@ body {
 
 
 
+.contact-form {
+	position: relative;
+	width: 100%;
+	max-width: 900px;
+	padding: 24px;
+	margin: 40px auto;
+	background: var(--light);
+	border-radius: 20px;
+	box-shadow: none;
+}
 
+
+.contact-form h2 {
+	font-size: 30px;
+	color: #333;
+	font-weight: 500;
+	font-weight: bold;
+}
+
+.input-box {
+	position: relative;
+	width: 100%;
+	margin-top: 10px;
+}
+
+.input-box input {
+	width: 100%;
+	padding: 5px 0;
+	font-size: 16px;
+	margin: 10px 0;
+	border: none;
+	border-bottom: 2px solid #333;
+	outline: none;
+	caret-color: var(--primary-green-color);
+}
+
+.input-box span {
+	position: absolute;
+	left: 0;
+	padding: 5px 0;
+	font-size: 16px;
+	margin: 10px 0;
+	pointer-events: none;
+	transition: 0.5s;
+	color: var(--primary-green-color);
+}
+
+.input-box input:focus~span,
+.input-box input:valid~span {
+	font-size: 12px;
+	transform: translatey(-20px);
+}
+
+.complaint-form {
+	padding: 20px;
+	border-radius: 15px;
+	margin-left: -20px;
+}
+
+select,
+textarea,
+button {
+	font-family: "Poppins", sans-serif;
+	width: 100%;
+	margin-top: 10px;
+	padding: 10px;
+	border-radius: 8px;
+	border: 1px solid #ccc;
+	font-size: 16px;
+	resize: none;
+	caret-color: var(--primary-green-color);
+	border: 1px solid var(--primary-green-color);
+	outline: 0;
+}
+
+
+button {
+	background-color: #28a745;
+	color: white;
+	border: none;
+	margin-top: 15px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+button:hover {
+	background-color: #218838;
+}
