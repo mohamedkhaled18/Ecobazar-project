@@ -84,7 +84,8 @@ cardNumberInput.addEventListener("keyup", (e) => {
 document.querySelector(".buttonCheckout").addEventListener("click", (e) => {
     if (!checkCard()) {
         e.preventDefault();
-    }
+    } else 
+        alert("Order Confirmed");
 });
 
 function checkCard() {
@@ -95,37 +96,55 @@ function checkCard() {
 
     let valid = true;
 
-    // Card number: must be exactly 16 digits
     if (cardNumber.length != 16) {
         document.getElementById("card-number").classList.add("error-input");
         valid = false;
-    } else {
+    } else
         document.getElementById("card-number").classList.remove("error-input");
-    }
 
     if (cvcNumber.length != 3) {
         document.getElementById("cvc-number").classList.add("error-input");
         valid = false;
-    } else {
+    } else
         document.getElementById("cvc-number").classList.remove("error-input");
-    }
 
 
     if (expireMonthInput < 1 || expireMonthInput > 12) {
         document.getElementById("expirey-month-date").classList.add("error-input");
         valid = false;
-    } else {
+    } else
         document.getElementById("expirey-month-date").classList.remove("error-input");
-    }
-
     
     const currentYear = new Date().getFullYear();
     if (expireYearInput < currentYear || expireYearInput > currentYear + 10) {
         document.getElementById("expirey-year-date").classList.add("error-input");
         valid = false;
-    } else {
+    } else
         document.getElementById("expirey-year-date").classList.remove("error-input");
-    }
 
     return valid;
 }
+
+// Select Payment Method
+const methods = document.querySelectorAll("input[type='radio']");
+const cardPaymentMenu = document.querySelector(".card-payment-menu");
+const confirmBtn = document.querySelector(".cash-payment-btn");
+
+confirmBtn.addEventListener("click", () =>  {
+    alert("Order Confirmed");
+    window.location.reload();
+});
+
+methods.forEach(method => {
+    method.addEventListener("change", (e) => {
+        let paymentMethod = e.currentTarget.id;
+        if (paymentMethod === "pay-card") {
+            cardPaymentMenu.style.display = "block";
+            confirmBtn.style.display = "none";
+        }
+        else  {
+            cardPaymentMenu.style.display = "none";
+            confirmBtn.style.display = "block";
+        }
+    })
+});

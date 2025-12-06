@@ -258,7 +258,18 @@
             <div class="totalPrice">$0</div>
           </div>
         </div>
-        <form class="card-payment">
+        <form class="payment-method">
+          <div id="cash-payment">
+            <input type="radio" checked name="payment" id="pay-cash">
+            <label for="pay-cash">Pay cash</label>
+          </div>
+          <div id="card-payment">
+            <input type="radio" name="payment" id="pay-card">
+            <label for="pay-card">Pay by card</label>
+          </div>
+        </form>
+        
+        <form class="card-payment-menu">
           <h1>Pay by card</h1>
           <div class="card-number">
             <label for="card-number">Card Number</label>
@@ -276,6 +287,9 @@
           </div>
           <button class="buttonCheckout" type="submit">CHECKOUT</button>
         </form>
+        <button class="cash-payment-btn buttonCheckout">
+          Confirm Order
+        </button>
       </div>
       <div class="leftCart">
         <h1>Your Cart</h1>
