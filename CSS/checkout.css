@@ -111,11 +111,6 @@
   border-radius: 7px;
 }
 
-/* Scrollbar container */
-.leftCart .list::-webkit-scrollbar {
-  /* width: 15px; */
-}
-
 .leftCart .list::-webkit-scrollbar-track {
   background: #fff;
   border-radius: 10px;
