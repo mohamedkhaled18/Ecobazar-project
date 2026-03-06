@@ -61,6 +61,7 @@ export async function loadProductsData() {
 
 export async function addDataToHTML(currentPage = 'home') {
     const products = await loadProductsData();
+    
     let listProductHTML = document.querySelector('.prodfield');
     let Products = currentPage === "home" ? Object.values(products).slice(0, 8) : products;
     listProductHTML.innerHTML = '';
@@ -114,3 +115,4 @@ export const Storage = {
         return JSON.parse(data);
     }
 }
+

@@ -5,6 +5,7 @@ const products = await loadProductsData();
 const itemsContainer = document.querySelector('.cart-list .items');
 const listCart = new Cart();
 listCart.renderCartHTML(itemsContainer);
+addDataToHTML();
 
 function addCart(btn, idProduct) {
     if (listCart[idProduct] == null) {

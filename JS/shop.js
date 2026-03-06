@@ -1,5 +1,4 @@
 import { addDataToHTML, playAddSound } from "./helpers.js";
-// Cart list
 const cartList = document.querySelector(".cart-list");
 const close = document.querySelector(".cart-list .top-section .close");
 const darkBackground = document.querySelector(".dark-background");
@@ -16,7 +15,6 @@ close.addEventListener("click", () => {
 });
 
 
-// Cart Adding
 function addCart(btn, idProduct) {
     if (listCart[idProduct] == null) {
         listCart[idProduct] = {
@@ -38,34 +36,7 @@ function addCart(btn, idProduct) {
     updateCartHTML();
 }
 
-function updateCartHTML() {
-    let itemsContainer = document.querySelector('.cart-list .items');
-    itemsContainer.innerHTML = '';
 
-    Object.values(listCart).forEach(product => {
-        let newItem = document.createElement('div');
-        newItem.classList.add('item');
-        newItem.innerHTML = `
-            <div class="item-image">
-                <img src="${product.image}" alt="">
-            </div>
-            <div class="content">
-                <div class="product-name">${product.name}</div>
-                <div class="product-price">$${product.price.toFixed(2)} / 1 product</div>
-            </div>
-            <div class="quantity">
-                <span onclick="changeQuantity(${product.id}, '-')">-</span>
-                <span class="value">${product.quantity}</span>
-                <span onclick="changeQuantity(${product.id}, '+')">+</span>
-            </div>  
-        `;
-        itemsContainer.appendChild(newItem);
-    });
-
-    document.querySelector('.cart span').innerText = totalQuantity;
-}
-
-// Quantity Change
 function changeQuantity(idProduct, type) {
     if (type === '+') {
         listCart[idProduct].quantity++;
@@ -90,15 +61,11 @@ window.addEventListener('load', () => {
         totalQuantity = Object.values(listCart).reduce((total, product) => total + product.quantity, 0);
         updateCartHTML();
     }
-    addDataToHTML('shopping');
+    addDataToHTML('shop');
 });
 
 window.addCart = addCart;
 window.changeQuantity = changeQuantity;
-function saveCart() {
-    localStorage.setItem('listCart', JSON.stringify(listCart));
-    document.cookie = `listCart=${JSON.stringify(listCart)}; expires=Fri, 31 Dec 2025 23:59:59 GMT; path=/`;
-}
 
 // Search
 function search() {
