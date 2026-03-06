@@ -86,7 +86,7 @@
           </div>
         </div>
       </div>
-      <input type="submit" value"login">
+      <input type="submit" id="submit-btn" value="login">
       <p class="gray text-center">Don't have account? <a class="" href="./register.html">Register</a></p>
     </form>
 
@@ -155,22 +155,23 @@
 </html>
 
 <?php 
-array_replace()
+  include_once '../Connection.php';
+  if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST)) {
+    
+    $conn = new SqlConnection("shop");
 
-  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    $conn = mysqli_connect("localhost", "root", "", "shop");
-    if (!$conn) {
-      echo "connection failed";
-      exit();
+    $conn->connect();
+    $email = $_POST['email']?? '';
+    $password = $_POST['password']?? '';
+    $role = $_POST['role']?? '';
+    
+    $result = $conn->select("users", "password = '$password' AND email = '$email' AND role = '$role'");
+    while (!$row = mysqli_fetch_assoc($result)) {
+      setcookie("user['email']", $row['email']);
+      setcookie("user['password']", $row['password']);
+      setcookie("user['role']", $row['role']);
     }
-    $pass = $_POST['password'];
-    $result = mysqli_query($conn, "SELECT * FROM users where password = '$pass'");
-    if (!$result)
-        throw new RuntimeException("Error here");
-
-    while ($row = mysqli_fetch_assoc($result)) 
-      print_r($row);
-
-    mysqli_close($conn);
+    
+    
+    $conn->close();
   }

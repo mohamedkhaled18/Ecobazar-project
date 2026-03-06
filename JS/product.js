@@ -16,13 +16,11 @@ const slider = document.getElementById('slider');
 slider.addEventListener("scroll", checkScroll);
 
 function checkScroll() {
-  // The Start  
   if (slider.scrollLeft === 0)
     leftScrollBtn.style.opacity = "0.3";
   else
     leftScrollBtn.style.opacity = "1";
 
-  // The End
   if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth) {
     rightScrollBtn.style.opacity = "0.3";
   } else {

@@ -73,7 +73,7 @@ header nav {
   text-decoration: underline;
 }
 
-button {
+#submit-btn {
   background-color: var(--primary-green-color);
   color: white;
   border: 0;
@@ -87,11 +87,11 @@ button {
   margin: 20px 0;
 }
 
-button:hover {
+#submit-btn:hover {
   background-color: var(--dark-green);
 }
 
-button + p > a:hover{
+#submit-btn + p > a:hover{
   text-decoration: underline;
 }
 
