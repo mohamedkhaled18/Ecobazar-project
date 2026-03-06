@@ -147,7 +147,7 @@
   </div>
 
   <!-- Script -->
-  <script type="module" src="../JS/javascript.js"></script>
+  <script type="module" src="../JS/main.js"></script>
   <script src="../JS/login.js"></script>
 
 </body>

@@ -1,0 +1,110 @@
+[
+    {
+        "id": 1,
+        "name": "Fresh Banana",
+        "price": 3.60,
+        "image": "../materials/Yellow-Banana-1-Kg.jpg",
+        "numrevs": "1025",
+        "discount": 0.10,
+        "linkPage": "banana.html"
+    },
+    {
+        "id": 2,
+        "name": "Fresh Strawberry",
+        "price": 4.00,
+        "image": "../materials/straww.png",
+        "numrevs": "734",
+        "discount": 0.20,
+        "linkPage": "straw.html"
+    },
+    {
+        "id": 3,
+        "name": "Fresh Tomato",
+        "price": 1.80,
+        "image": "../materials/tomato.jpg",
+        "numrevs": "206",
+        "discount": 0.10,
+        "linkPage": "tomato.html"
+    },
+    {
+        "id": 4,
+        "name": "Fresh Orange",
+        "price": 2.25,
+        "image": "../materials/Orange-Valencia-1-Kg.jpg",
+        "numrevs": "389",
+        "discount": 0.25,
+        "linkPage": "orange.html"
+    },
+    {
+        "id": 5,
+        "name": "Canned Pineapple",
+        "price": 9.00,
+        "image": "../materials/cannedpineapple.jpg",
+        "numrevs": "805",
+        "discount": 0.10,
+        "linkPage": "cannedpineapple.html"
+    },
+    {
+        "id": 6,
+        "name": "Frozen Berries",
+        "price": 4.80,
+        "image": "../materials/frozenberries.jpg",
+        "numrevs": "2465",
+        "discount": 0.40,
+        "linkPage": "frozenberries.html"
+    },
+    {
+        "id": 7,
+        "name": "Fresh Cucumber",
+        "price": 2.00,
+        "image": "../materials/cucmber.jpg",
+        "numrevs": "346",
+        "discount": 0.50,
+        "linkPage": "cucmber.html"
+    },
+    {
+        "id": 8,
+        "name": "Mixed Fruits",
+        "price": 10.80,
+        "image": "../materials/mixedfruits.jpg",
+        "numrevs": "1548",
+        "discount": 0.10,
+        "linkPage": "mixedfruits.html"
+    },
+    {
+        "id": 9,
+        "name": "Fresh Onions",
+        "price": 2.25,
+        "image": "../materials/onions.jpg",
+        "numrevs": "108",
+        "discount": 0.10,
+        "linkPage": "onions.html"
+    },
+    {
+        "id": 10,
+        "name": "Fresh Lettuce",
+        "price": 2.25,
+        "image": "../materials/lettuce.jpg",
+        "numrevs": "798",
+        "discount": 0.75,
+        "linkPage": "lettuce.html"
+    },
+    {
+        "id": 11,
+        "name": "Dried Fruits",
+        "price": 15.00,
+        "image": "../materials/dried fruits.jpg",
+        "numrevs": "128",
+        "discount": 0.75,
+        "linkPage": "driedfruits.html"
+    },
+    {
+        "id": 12,
+        "name": "Fresh Pepper",
+        "price": 1.50,
+        "image": "../materials/pepper.jpeg",
+        "numrevs": "158",
+        "discount": 0.75,
+        "linkPage": "papper.html"
+    }
+]

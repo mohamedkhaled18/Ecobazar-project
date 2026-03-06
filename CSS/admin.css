@@ -53,6 +53,17 @@ body {
     padding: 36px 24px;
     font-family: var(--poppins);
 }
+@media (max-width: 600px) {
+	#content main {
+		padding: 12px 4px;
+		font-size: 14px;
+	}
+	#content main .head-title {
+		flex-direction: column;
+		align-items: flex-start;
+		grid-gap: 8px;
+	}
+}
 #content main .head-title {
 	display: flex;
 	align-items: center;

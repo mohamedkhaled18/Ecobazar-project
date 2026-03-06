@@ -1,91 +1,4 @@
-let products = [
-    {
-        "id": 1, "name": "Fresh Banana", "price": 3.60, "image": "../materials/Yellow-Banana-1-Kg.jpg", "numrevs": "1025", "discount": 0.10,
-        "linkPage": "banana.html"
-    },
-    {
-        "id": 2, "name": "Fresh Strawberry", "price": 4.00, "image": "../materials/straww.png", "numrevs": "734", "discount": 0.20,
-        "linkPage": "straw.html"
-    },
-    {
-        "id": 3, "name": "Fresh Tomato", "price": 1.80, "image": "../materials/tomato.jpg", "numrevs": "206", "discount": 0.10,
-        "linkPage": "tomato.html"
-    },
-    {
-        "id": 4, "name": "Fresh Orange", "price": 2.25, "image": "../materials/Orange-Valencia-1-Kg.jpg", "numrevs": "389", "discount": 0.25,
-        "linkPage": "orange.html"
-    },
-    {
-        "id": 5, "name": "Canned Pineapple", "price": 9.00, "image": "../materials/cannedpineapple.jpg", "numrevs": "805", "discount": 0.10,
-        "linkPage": "cannedpineapple.html"
-    },
-    {
-        "id": 6, "name": "Frozen Berries", "price": 4.80, "image": "../materials/frozenberries.jpg", "numrevs": "2465", "discount": 0.40,
-        "linkPage": "frozenberries.html"
-    },
-    {
-        "id": 7, "name": "Fresh Cucumber", "price": 2.00, "image": "../materials/cucmber.jpg", "numrevs": "346", "discount": 0.50,
-        "linkPage": "cucmber.html"
-    },
-    {
-        "id": 8, "name": "Mixed Fruits", "price": 10.80, "image": "../materials/mixedfruits.jpg", "numrevs": "1548", "discount": 0.10,
-        "linkPage": "mixedfruits.html"
-    },
-    {
-        "id": 9, "name": "Fresh Onions", "price": 2.25, "image": "../materials/onions.jpg", "numrevs": "108", "discount": 0.10,
-        "linkPage": "onions.html"
-    },
-    {
-        "id": 10, "name": "Fresh Lettuce", "price": 2.25, "image": "../materials/lettuce.jpg", "numrevs": "798", "discount": 0.75,
-        "linkPage": "lettuce.html"
-    },
-    {
-        "id": 11, "name": "Dried Fruits", "price": 15.00, "image": "../materials/dried fruits.jpg", "numrevs": "128", "discount": 0.75,
-        "linkPage": "driedfruits.html"
-    },
-    {
-        "id": 12, "name": "Fresh Pepper", "price": 1.50, "image": "../materials/pepper.jpeg", "numrevs": "158", "discount": 0.75,
-        "linkPage": "papper.html"
-    },
-];
-let totalQuantity = 0;
-let listCart = {};
-
-function addDataToHTML() {
-    let listProductHTML = document.querySelector('.prodfield');
-    // let currentPage = String(location.href.split("/").slice(-1)).replace("#", "");
-    // let Products = currentPage === "index.html" ? Object.values(products).slice(0, 8) : Object.values(products).slice(0, 12);
-    listProductHTML.innerHTML = '';
-
-    products.forEach(product => {
-        const oldPrice = (product.price / (1 - product.discount)).toFixed(2);
-        const discountPercentage = Math.round(product.discount * 100);
-        let newProduct = document.createElement('div');
-        
-
-        newProduct.classList.add('prod');
-        newProduct.innerHTML = `
-            <img src="${product.image}">
-        <div class="decsription">
-            <a class="single-product" href="${product.linkPage}">${product.name}</a>
-            <div class="stars">
-                <span>★★★★★</span>
-                <span class="numrevs">(${product.numrevs})</span>
-            </div>
-            <div class="price">
-                <span class="old">$${oldPrice}</span>
-                <span class="new">$${product.price.toFixed(2)}</span>
-                <span class="discount">${discountPercentage}% OFF</span>
-            </div>
-            <div class="addcart">
-                <button id="add-btn" onclick="addCart(this,${product.id})">Add To Cart</button>
-            </div>
-        </div>
-                `;
-        listProductHTML.appendChild(newProduct);
-    });
-}
-
+import { addDataToHTML, playAddSound } from "./helpers.js";
 // Cart list
 const cartList = document.querySelector(".cart-list");
 const close = document.querySelector(".cart-list .top-section .close");
@@ -101,39 +14,6 @@ close.addEventListener("click", () => {
     cartList.style.right = "-60%";
     darkBackground.style.display = "none";
 });
-
-
-function addDataToHTML() {
-    let listProductHTML = document.querySelector('.prodfield');
-    listProductHTML.innerHTML = '';
-
-    products.forEach(product => {
-        const oldPrice = (product.price / (1 - product.discount)).toFixed(2);
-        const discountPercentage = Math.round(product.discount * 100);
-
-        let newProduct = document.createElement('div');
-        newProduct.classList.add('prod');
-        newProduct.innerHTML = `
-            <img src="${product.image}">
-            <div class="decsription">
-                <h2>${product.name}</h2>
-                <div class="stars">
-                    <span>★★★★★</span>
-                    <span class="numrevs">(${product.numrevs})</span>
-                </div>
-                <div class="price">
-                    <span class="old">$${oldPrice}</span>
-                    <span class="new">$${product.price.toFixed(2)}</span>
-                    <span class="discount">${discountPercentage}% OFF</span>
-                </div>
-                <div class="addcart">
-                    <button id="add-btn" onclick="addCart(this,${product.id})">Add To Cart</button>
-                </div>
-            </div>
-        `;
-        listProductHTML.appendChild(newProduct);
-    });
-}
 
 
 // Cart Adding
@@ -210,7 +90,7 @@ window.addEventListener('load', () => {
         totalQuantity = Object.values(listCart).reduce((total, product) => total + product.quantity, 0);
         updateCartHTML();
     }
-    addDataToHTML();
+    addDataToHTML('shopping');
 });
 
 window.addCart = addCart;
