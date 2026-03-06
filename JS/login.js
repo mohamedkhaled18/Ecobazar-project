@@ -22,7 +22,7 @@ submitBtn.addEventListener("click", (e) => {
   if (alerts.length !== 0) {
     return ;
   }
-  headToPage();
+
 })
 
 
@@ -70,7 +70,7 @@ function togglePass(element) {
 }
 
 
-function headToPage() {
-  const role = document.getElementById("role").value;
-  window.location.href = role + ".html";
-}
+// function headToPage() {
+//   const role = document.getElementById("role").value;
+//   window.location.href = role + ".html";
+// }

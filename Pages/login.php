@@ -15,7 +15,6 @@
 <body>
   <!-- Header -->
   <header id="top">
-    <!-- Logo -->
     <div class="logo">
       <a href="../index.html">
         <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -26,113 +25,7 @@
         <span>Ecobazar</span>
       </a>
     </div>
-    <!-- Naigation Bar -->
     <nav>
-      <!-- Search Box -->
-      <div class="search-box">
-        <div class="search-icon">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </div>
-        <input type="text" placeholder="search" class="search" onkeyup="search()">
-        <div class="prods-search">
-          <div class="prodsresult">
-            <a href="./banana.html" class="item">
-              <img src="../materials/Yellow-Banana-1-Kg.jpg">
-              <div class="prod-details">
-                Fresh banana
-              </div>
-            </a>
-          </div>
-          <div class="prodsresult">
-            <a href="./cucmber.html" class="item">
-              <img src="../materials/cucmber.jpg">
-              <div class="prod-details">
-                Fresh cucmber
-              </div>
-            </a>
-          </div>
-          <div class="prodsresult">
-            <a href="./mixedfruits.html" class="item">
-              <img src="../materials/mixedfruits.jpg">
-              <div class="prod-details">
-                Mixed fruits
-              </div>
-            </a>
-          </div>
-          <div class="prodsresult">
-            <a href="./frozenberries.html" class="item">
-              <img src="../materials/frozenberries.jpg">
-              <div class="prod-details">
-                Frozen berries
-              </div>
-            </a>
-          </div>
-          <div class="prodsresult">
-            <a href="./cannedpineapple.html" class="item">
-              <img src="../materials/cannedpineapple.jpg">
-              <div class="prod-details">
-                Canned pineapple
-              </div>
-            </a>
-          </div>
-          <div class="prodsresult">
-            <a href="./orange.html" class="item">
-              <img src="../materials/Orange-Valencia-1-Kg.jpg">
-              <div class="prod-details">
-                Fresh orange
-              </div>
-            </a>
-          </div>
-          <div class="prodsresult">
-            <a href="./straw.html" class="item">
-              <img src="../materials/straww.png">
-              <div class="prod-details">
-                Fresh strawberry
-              </div>
-            </a>
-          </div>
-          <div class="prodsresult">
-            <a href="./tomato.html" class="item">
-              <img src="../materials/tomato.jpg">
-              <div class="prod-details">
-                Fresh tomato
-              </div>
-            </a>
-          </div>
-          <div class="prodsresult">
-            <a href="./onions.html" class="item">
-              <img src="../materials/onions.jpg">
-              <div class="prod-details">
-                Fresh onions
-              </div>
-            </a>
-          </div>
-          <div class="prodsresult">
-            <a href="./pepper.html" class="item">
-              <img src="../materials/pepper.jpeg">
-              <div class="prod-details">
-                Fresh pepper
-              </div>
-            </a>
-          </div>
-          <div class="prodsresult">
-            <a href="./lettuce.html" class="item">
-              <img src="../materials/lettuce.jpg">
-              <div class="prod-details">
-                Fresh lettuce
-              </div>
-            </a>
-          </div>
-          <div class="prodsresult">
-            <a href="./driedfruits.html" class="item">
-              <img src="../materials/dried fruits.jpg">
-              <div class="prod-details">
-                Dried fruits
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
       <div class="pages-section">
         <ul>
           <li><a href="../index.html">HOME</a></li>
@@ -144,7 +37,7 @@
       <div class="sign-cart">
         <ul>
           <li>
-            <a href="login.html">
+            <a href="login.php">
               <i class="fa-solid fa-right-to-bracket"></i>
             </a>
           </li>
@@ -153,62 +46,24 @@
               <i class="fa-solid fa-user-plus"></i>
             </a>
           </li>
-          <li>
-
-            <div class="cart">
-              <a href="#">
-                <i class="fa-solid fa-cart-shopping"></i>
-              </a>
-              <span class="cart-length">0</span>
-            </div>
-          </li>
         </ul>
       </div>
     </nav>
   </header>
 
-  <!-- Cart List -->
-  <div class="dark-background"></div>
-  <div class="cart-list">
-    <div class="top-section">
-      <h2>Cart</h2>
-      <div class="close">
-        <i class="fa-solid fa-xmark"></i>
-      </div>
-    </div>
-    <div class="container-items" style="position: relative;">
-      <div class="items">
-        <div class="item">
-          <div class="item-image">
-            <img src="" alt="">
-          </div>
-          <div class="item-info">
-            <div class="item-name">Item name</div>
-            <div class="item-price">price</div>
-          </div>
-          <div class="item-counter">
-            <span>-</span>
-            <span>0</span>
-            <span>+</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <a href="./checkout.html" class="checkout">Checkout</a>
-  </div>
 
   <div class="container">
-    <form action="">
+    <form action="" method="post">
       <h2>Log In</h2>
       <div class="input-data">
         <p class="invalid blank-error">Input can not be blank</p>
         <div class="email-input">
-          <input type="email" placeholder="Email" name="Email" id="email">
+          <input type="email" placeholder="Email" name="email" id="email">
           <p class="invalid invalid-email">The email is not written well</p>
         </div>
         <p class="invalid invalid-length">The length is less than 12 characters</p>
         <div class="password-input">
-          <input type="password" placeholder="Password" name="Password" id="password">
+          <input type="password" placeholder="Password" name="password" id="password">
           <svg class="pass-icon" width="20" height="21" viewBox="0 0 20 21" fill="none"
             xmlns="http://www.w3.org/2000/svg">
             <path
@@ -231,9 +86,7 @@
           </div>
         </div>
       </div>
-      <button>
-        Login
-      </button>
+      <input type="submit" value"login">
       <p class="gray text-center">Don't have account? <a class="" href="./register.html">Register</a></p>
     </form>
 
@@ -268,7 +121,7 @@
     </div>
     <div class="useracc">
       <h3>My Account</h3>
-      <a href="login.html">Sign in</a>
+      <a href="login.php">Sign in</a>
       <a href="checkout.html">Check out</a>
       <a href="contact.html">Help</a>
       <a href="register.html">Sign up</a>
@@ -294,9 +147,30 @@
   </div>
 
   <!-- Script -->
-  <script src="../JS/javascript.js"></script>
+  <script type="module" src="../JS/javascript.js"></script>
   <script src="../JS/login.js"></script>
 
 </body>
 
 </html>
+
+<?php 
+array_replace()
+
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    $conn = mysqli_connect("localhost", "root", "", "shop");
+    if (!$conn) {
+      echo "connection failed";
+      exit();
+    }
+    $pass = $_POST['password'];
+    $result = mysqli_query($conn, "SELECT * FROM users where password = '$pass'");
+    if (!$result)
+        throw new RuntimeException("Error here");
+
+    while ($row = mysqli_fetch_assoc($result)) 
+      print_r($row);
+
+    mysqli_close($conn);
+  }
