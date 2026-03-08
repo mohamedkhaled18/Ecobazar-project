@@ -115,4 +115,3 @@ export const Storage = {
         return JSON.parse(data);
     }
 }
-

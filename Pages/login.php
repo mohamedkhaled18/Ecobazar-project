@@ -1,15 +1,42 @@
+<?php 
+
+  include_once '../Connection.php';
+
+  if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST)) {
+    
+    $conn = new SqlConnection("shop");
+
+    $conn->connect();
+    $email = $_POST['email']?? '';
+    $password = $_POST['password']?? '';
+    $role = $_POST['role']?? '';
+    
+    $result = $conn->select("users", "password = '$password' AND email = '$email' AND role = '$role'");
+    while ($row = mysqli_fetch_assoc($result)) {
+      setcookie("email", $row['email']);
+      setcookie("password", password_hash($row['password'], PASSWORD_DEFAULT));
+      setcookie("role", $row['role']);
+    }
+    echo $_COOKIE["password"];
+    $conn->close();
+    header("Location: ". $_SERVER["PHP_SELF"]);
+    exit();
+  }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="../CSS/single_products.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../CSS/global.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <title>Ecobazar | Login</title>
   <link rel="shortcut icon" href="../materials/Screenshot 2025-05-03 235020.png" type="image/x-icon">
   <link rel="stylesheet" href="../CSS/login.css">
-  <link rel="stylesheet" href="../CSS/global.css">
-<link rel="stylesheet" href="../CSS/single_products.css">
 </head>
 
 <body>
@@ -26,7 +53,14 @@
       </a>
     </div>
     <nav>
-      <div class="pages-section">
+      <div id="open-menu-bar" class="menu-bar-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="pages-section ">
+        <input type="checkbox" id="close-menu-bar" style="display: none;">
+        <label for="close-menu-bar" class="close-menu-bar-btn">❌</label>
         <ul>
           <li><a href="../index.html">HOME</a></li>
           <li><a href="shopping.html">SHOP</a></li>
@@ -154,24 +188,3 @@
 
 </html>
 
-<?php 
-  include_once '../Connection.php';
-  if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST)) {
-    
-    $conn = new SqlConnection("shop");
-
-    $conn->connect();
-    $email = $_POST['email']?? '';
-    $password = $_POST['password']?? '';
-    $role = $_POST['role']?? '';
-    
-    $result = $conn->select("users", "password = '$password' AND email = '$email' AND role = '$role'");
-    while (!$row = mysqli_fetch_assoc($result)) {
-      setcookie("user['email']", $row['email']);
-      setcookie("user['password']", $row['password']);
-      setcookie("user['role']", $row['role']);
-    }
-    
-    
-    $conn->close();
-  }

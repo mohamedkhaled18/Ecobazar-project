@@ -6,7 +6,7 @@ header nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 40px;
   height: calc(100vh - 102px);
 }
 
