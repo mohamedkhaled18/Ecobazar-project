@@ -1,4 +1,4 @@
-import { addDataToHTML, playAddSound } from "./helpers.js";
+import { addDataToHTML, playAddSound, loadProductsData } from "./helpers.js";
 const cartList = document.querySelector(".cart-list");
 const close = document.querySelector(".cart-list .top-section .close");
 const darkBackground = document.querySelector(".dark-background");
@@ -14,6 +14,15 @@ close.addEventListener("click", () => {
     darkBackground.style.display = "none";
 });
 
+try {
+    document.querySelector(".spinner").style.display = "block"
+    let data = await loadProductsData();
+}catch(e) {
+    
+} finally{
+    document.querySelector(".spinner").style.display = "none"
+
+}
 
 function addCart(btn, idProduct) {
     if (listCart[idProduct] == null) {

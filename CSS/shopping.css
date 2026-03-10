@@ -132,19 +132,9 @@
   color: var(--primary-green-color);
 }
 
-.prodfield {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  place-items: center;
-  gap: 30px 20px;
-  padding-top: 2rem;
-}
-
 #blackfridaybanner {
   background-image: url(../materials/black_friday_brush_stroke_vector_01.jpg);
   height: 60vh;
   background-size: cover;
   margin: 20px 0 40px 0;
 }
-
-

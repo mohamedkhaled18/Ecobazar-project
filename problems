@@ -1,0 +1,16 @@
+- shop page needs to have all products
+- in case any actor cart should be removed but customer
+
+# PHP
+- log out the user
+- edit password in case forgetting password
+
+
+ERD:
+    User:
+        firstName
+        secondName
+        userName
+        email
+        password
+        role

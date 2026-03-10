@@ -1,190 +1,217 @@
 <?php 
 
-  include_once '../Connection.php';
-
-  if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST)) {
-    
-    $conn = new SqlConnection("shop");
-
-    $conn->connect();
-    $email = $_POST['email']?? '';
-    $password = $_POST['password']?? '';
-    $role = $_POST['role']?? '';
-    
-    $result = $conn->select("users", "password = '$password' AND email = '$email' AND role = '$role'");
-    while ($row = mysqli_fetch_assoc($result)) {
-      setcookie("email", $row['email']);
-      setcookie("password", password_hash($row['password'], PASSWORD_DEFAULT));
-      setcookie("role", $row['role']);
+  function check_login_data($connection, array $data) {
+    list('email' => $email, 'password' => $password, 'role' => $role) = $data;
+    $result = $connection->select("users", "email = '$email' AND password = '$password'");
+    $isPasswordVerified = false;
+    if ($row = mysqli_fetch_assoc($result)) {
+      foreach ($data as $key => $value) {
+        if ($row[$key] != $value)
+          return false;
+      }
+      return mysqli_num_rows($result) > 0 && $isPasswordVerified;
     }
-    echo $_COOKIE["password"];
-    $conn->close();
-    header("Location: ". $_SERVER["PHP_SELF"]);
-    exit();
   }
+?>
+
+
+<?php 
+  include_once '../DB.php';
+  $error; 
+  if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST)) {
+    $connection = new DB("shop");
+    $connection->connect();
+    if (!check_login_data($connection, $_POST)) {
+      $error = 'Login failure';
+    } else {
+      $connection->close();
+      header("Location: ". $_SERVER['PHP_SELF']); // Direct to dashboard
+      exit();
+    }
+  } 
 ?>
 
 
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="../CSS/single_products.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../CSS/global.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <title>Ecobazar | Login</title>
-  <link rel="shortcut icon" href="../materials/Screenshot 2025-05-03 235020.png" type="image/x-icon">
-  <link rel="stylesheet" href="../CSS/login.css">
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../CSS/single_products.css">
+    <link rel="stylesheet" href="../CSS/global.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Ecobazar | Login</title>
+    <link rel="shortcut icon" href="../materials/Screenshot 2025-05-03 235020.png" type="image/x-icon">
+    <link rel="stylesheet" href="../CSS/login.css">
+  </head>
 
-<body>
-  <!-- Header -->
-  <header id="top">
-    <div class="logo">
-      <a href="../index.html">
-        <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M31.2749 4.84308C27.4022 4.84308 21.9311 5.16711 19.1352 7.96154C17.9247 9.17204 17.3202 11.1454 17.4771 13.3789C17.4975 13.674 17.6937 13.9253 17.9756 14.0184C18.256 14.1099 18.5641 14.0241 18.7559 13.7989C20.3108 11.9694 22.2435 10.5032 24.5046 9.4409C24.6964 9.34935 24.9231 9.34206 25.1295 9.41474C25.3111 9.48013 25.4535 9.60363 25.5276 9.76207C25.6816 10.0876 25.6322 10.5163 25.1207 10.7575C25.0917 10.772 25.0655 10.7909 25.0365 10.804C25.0263 10.8083 25.0147 10.8069 25.006 10.8113C19.4346 13.4299 16.6954 17.9986 15.4514 22.6966C14.5446 16.8143 12.6294 13.3514 10.8202 11.2254C9.51095 9.52816 8.22341 8.62861 7.47943 8.12005C7.34136 8.02557 6.92435 7.74077 6.7514 7.56782C6.46803 7.28445 6.46803 6.82378 6.7514 6.54041C7.03477 6.25848 7.49687 6.25848 7.81218 6.57236C7.88923 6.64068 8.01272 6.72787 8.16966 6.8325L8.29902 6.91969C9.35108 7.64043 11.31 8.97879 13.0479 11.8604C13.2034 12.1176 13.5042 12.2557 13.7963 12.2005C14.0928 12.1481 14.3252 11.92 14.3834 11.625C14.7627 9.68796 14.5927 6.81356 12.8649 5.08578C10.069 2.29278 4.59789 1.96875 0.726671 1.96875C0.32553 1.96868 0 2.29421 0 2.69528C0 6.56793 0.324032 12.0391 3.11846 14.835C4.28387 16.0004 6.08147 16.5236 7.86736 16.5236C9.32486 16.5236 10.7533 16.1588 11.8476 15.5267C13.3399 18.619 14.5316 23.2386 14.5316 30.3053C14.5316 30.7064 14.8571 31.0319 15.2582 31.0319C15.6592 31.0319 15.9848 30.7064 15.9848 30.3053C15.9848 26.3629 16.6605 21.6314 19.173 17.7369C20.18 18.7207 21.9137 19.3441 23.8347 19.4022C23.9306 19.4052 24.0251 19.4066 24.1195 19.4066C26.0711 19.4066 27.796 18.7948 28.8815 17.7078C31.6773 14.912 31.9999 9.44083 31.9999 5.56811C32.0015 5.16711 31.6774 4.84308 31.2749 4.84308Z"
-            fill="#00B307" />
-        </svg>
-        <span>Ecobazar</span>
-      </a>
-    </div>
-    <nav>
-      <div id="open-menu-bar" class="menu-bar-icon">
-        <span></span>
-        <span></span>
-        <span></span>
+  <body>
+    <!-- Header -->
+    <header id="top">
+      <div class="logo">
+        <a href="../index.html">
+          <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M31.2749 4.84308C27.4022 4.84308 21.9311 5.16711 19.1352 7.96154C17.9247 9.17204 17.3202 11.1454 17.4771 13.3789C17.4975 13.674 17.6937 13.9253 17.9756 14.0184C18.256 14.1099 18.5641 14.0241 18.7559 13.7989C20.3108 11.9694 22.2435 10.5032 24.5046 9.4409C24.6964 9.34935 24.9231 9.34206 25.1295 9.41474C25.3111 9.48013 25.4535 9.60363 25.5276 9.76207C25.6816 10.0876 25.6322 10.5163 25.1207 10.7575C25.0917 10.772 25.0655 10.7909 25.0365 10.804C25.0263 10.8083 25.0147 10.8069 25.006 10.8113C19.4346 13.4299 16.6954 17.9986 15.4514 22.6966C14.5446 16.8143 12.6294 13.3514 10.8202 11.2254C9.51095 9.52816 8.22341 8.62861 7.47943 8.12005C7.34136 8.02557 6.92435 7.74077 6.7514 7.56782C6.46803 7.28445 6.46803 6.82378 6.7514 6.54041C7.03477 6.25848 7.49687 6.25848 7.81218 6.57236C7.88923 6.64068 8.01272 6.72787 8.16966 6.8325L8.29902 6.91969C9.35108 7.64043 11.31 8.97879 13.0479 11.8604C13.2034 12.1176 13.5042 12.2557 13.7963 12.2005C14.0928 12.1481 14.3252 11.92 14.3834 11.625C14.7627 9.68796 14.5927 6.81356 12.8649 5.08578C10.069 2.29278 4.59789 1.96875 0.726671 1.96875C0.32553 1.96868 0 2.29421 0 2.69528C0 6.56793 0.324032 12.0391 3.11846 14.835C4.28387 16.0004 6.08147 16.5236 7.86736 16.5236C9.32486 16.5236 10.7533 16.1588 11.8476 15.5267C13.3399 18.619 14.5316 23.2386 14.5316 30.3053C14.5316 30.7064 14.8571 31.0319 15.2582 31.0319C15.6592 31.0319 15.9848 30.7064 15.9848 30.3053C15.9848 26.3629 16.6605 21.6314 19.173 17.7369C20.18 18.7207 21.9137 19.3441 23.8347 19.4022C23.9306 19.4052 24.0251 19.4066 24.1195 19.4066C26.0711 19.4066 27.796 18.7948 28.8815 17.7078C31.6773 14.912 31.9999 9.44083 31.9999 5.56811C32.0015 5.16711 31.6774 4.84308 31.2749 4.84308Z"
+              fill="#00B307" />
+          </svg>
+          <span>Ecobazar</span>
+        </a>
       </div>
-      <div class="pages-section ">
-        <input type="checkbox" id="close-menu-bar" style="display: none;">
-        <label for="close-menu-bar" class="close-menu-bar-btn">❌</label>
-        <ul>
-          <li><a href="../index.html">HOME</a></li>
-          <li><a href="shopping.html">SHOP</a></li>
-          <li><a href="about_us.html">ABOUT US</a></li>
-          <li><a href="contact.html">CONTACT</a></li>
-        </ul>
-      </div>
-      <div class="sign-cart">
-        <ul>
-          <li>
-            <a href="login.php">
-              <i class="fa-solid fa-right-to-bracket"></i>
-            </a>
-          </li>
-          <li>
-            <a href="register.html">
-              <i class="fa-solid fa-user-plus"></i>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </header>
-
-
-  <div class="container">
-    <form action="" method="post">
-      <h2>Log In</h2>
-      <div class="input-data">
-        <p class="invalid blank-error">Input can not be blank</p>
-        <div class="email-input">
-          <input type="email" placeholder="Email" name="email" id="email">
-          <p class="invalid invalid-email">The email is not written well</p>
+      <nav>
+        <div class="sign-cart">
+          <ul>
+            <li>
+              <a href="login.php">
+                <i class="fa-solid fa-right-to-bracket"></i>
+              </a>
+            </li>
+            <li>
+              <a href="register.php">
+                <i class="fa-solid fa-user-plus"></i>
+              </a>
+            </li>
+          </ul>
         </div>
-        <p class="invalid invalid-length">The length is less than 12 characters</p>
-        <div class="password-input">
-          <input type="password" placeholder="Password" name="password" id="password">
-          <svg class="pass-icon" width="20" height="21" viewBox="0 0 20 21" fill="none"
+      </nav>
+    </header>
+
+
+    <div class="container">
+      <form id="login-form" action="" method="post">
+        <h2>Log In</h2>
+        <div class="input-data">
+          <p class="invalid blank-error">Input can not be blank</p>
+          <div class="email-input">
+            <input type="email" placeholder="Email" name="email" id="email">
+          </div>
+          <p class="invalid invalid-email" style="text-align: left;">The email is not written well</p>
+          <div class="password-input">
+            <input type="password" placeholder="Password" name="password" id="password">
+            <svg class="pass-icon" width="20" height="21" viewBox="0 0 20 21" fill="none"
             xmlns="http://www.w3.org/2000/svg">
             <path
-              d="M1.66669 10.5003C1.66669 10.5003 4.69669 4.66699 10 4.66699C15.3034 4.66699 18.3334 10.5003 18.3334 10.5003C18.3334 10.5003 15.3034 16.3337 10 16.3337C4.69669 16.3337 1.66669 10.5003 1.66669 10.5003Z"
-              stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            d="M1.66669 10.5003C1.66669 10.5003 4.69669 4.66699 10 4.66699C15.3034 4.66699 18.3334 10.5003 18.3334 10.5003C18.3334 10.5003 15.3034 16.3337 10 16.3337C4.69669 16.3337 1.66669 10.5003 1.66669 10.5003Z"
+            stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
             <path
-              d="M10 13C10.663 13 11.2989 12.7366 11.7678 12.2678C12.2366 11.7989 12.5 11.163 12.5 10.5C12.5 9.83696 12.2366 9.20107 11.7678 8.73223C11.2989 8.26339 10.663 8 10 8C9.33696 8 8.70107 8.26339 8.23223 8.73223C7.76339 9.20107 7.5 9.83696 7.5 10.5C7.5 11.163 7.76339 11.7989 8.23223 12.2678C8.70107 12.7366 9.33696 13 10 13V13Z"
-              stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            d="M10 13C10.663 13 11.2989 12.7366 11.7678 12.2678C12.2366 11.7989 12.5 11.163 12.5 10.5C12.5 9.83696 12.2366 9.20107 11.7678 8.73223C11.2989 8.26339 10.663 8 10 8C9.33696 8 8.70107 8.26339 8.23223 8.73223C7.76339 9.20107 7.5 9.83696 7.5 10.5C7.5 11.163 7.76339 11.7989 8.23223 12.2678C8.70107 12.7366 9.33696 13 10 13V13Z"
+            stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </div>
-        <select name="role" id="role">
-          <option value="owner">Owner</option>
-          <option value="employee">Employee</option>
-          <option value="admin">Admin</option>
-          <option value="customer">Customer</option>
-        </select>
-        <div class="remember-forget">
-          <div class="forget_pass">
-            <a href="" class="">Forget Password</a>
+        <p class="invalid invalid-length" style="text-align: left;">The length is less than 12 characters</p>
+          <select name="role" id="role">
+            <option value="owner">Owner</option>
+            <option value="employee">Employee</option>
+            <option value="admin">Admin</option>
+            <option value="customer">Customer</option>
+          </select>
+          <div class="remember-forget">
+            <div class="forget_pass">
+              <a href="" class="">Forget Password</a>
+            </div>
+          </div>
+        </div>
+        <input type="submit" id="submit-btn" value="login">
+        <?php if (isset($error)) :?>
+          <p class="error"><?= $error ?></p>
+        <?php endif ;?>
+        <p class="gray text-center">Don't have account? <a class="" href="./register.php">Register</a></p>
+      </form>
+
+      <div class="login-image">
+        <img src="../materials/Screenshot 2025-04-30 233121.png" alt="">
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="contacts">
+        <h3>Contacts</h3>
+        <p><strong>Adress:</strong> 88 october road, nasr city, cairo , egypt</p>
+        <p><strong>Phone:</strong> +20 1198 7456 23/+20 1256 9743 65</p>
+        <p><strong>Work hours:</strong> 9:00 am-9:00 pm/SUN-THU</p>
+        <div class="socialmedia">
+          <h5>Follow us</h5>
+          <div class="links">
+            <i class="fab facebook fa-facebook-f"></i>
+            <i class="fab twitter fa-twitter"></i>
+            <i class="fab instagram fa-instagram"></i>
+            <i class="fab youtube fa-youtube"></i>
           </div>
         </div>
       </div>
-      <input type="submit" id="submit-btn" value="login">
-      <p class="gray text-center">Don't have account? <a class="" href="./register.html">Register</a></p>
-    </form>
-
-    <div class="login-image">
-      <img src="../materials/Screenshot 2025-04-30 233121.png" alt="">
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="contacts">
-      <h3>Contacts</h3>
-      <p><strong>Adress:</strong> 88 october road, nasr city, cairo , egypt</p>
-      <p><strong>Phone:</strong> +20 1198 7456 23/+20 1256 9743 65</p>
-      <p><strong>Work hours:</strong> 9:00 am-9:00 pm/SUN-THU</p>
-      <div class="socialmedia">
-        <h5>Follow us</h5>
-        <div class="links">
-          <i class="fab facebook fa-facebook-f"></i>
-          <i class="fab twitter fa-twitter"></i>
-          <i class="fab instagram fa-instagram"></i>
-          <i class="fab youtube fa-youtube"></i>
+      <div class="about">
+        <h3>About</h3>
+        <a href="about_us.html">About us</a>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Privacy Policy</a>
+        <a href="contact.html">Contact us</a>
+      </div>
+      <div class="useracc">
+        <h3>My Account</h3>
+        <a href="login.php">Sign in</a>
+        <a href="checkout.html">Check out</a>
+        <a href="contact.html">Help</a>
+        <a href="register.php">Sign up</a>
+      </div>
+      <div class="app">
+        <h3>Our App</h3>
+        <p>Download it now from</p>
+        <div class="install">
+          <img src="../materials/play.jpg" alt="google play">
+          <img src="../materials/app.jpg" alt="app store">
         </div>
+        <p>Multiple secured payment</p>
+        <img src="../materials/pay.png" alt="payment">
       </div>
-    </div>
-    <div class="about">
-      <h3>About</h3>
-      <a href="about_us.html">About us</a>
-      <a href="#">Terms & Conditions</a>
-      <a href="#">Privacy Policy</a>
-      <a href="contact.html">Contact us</a>
-    </div>
-    <div class="useracc">
-      <h3>My Account</h3>
-      <a href="login.php">Sign in</a>
-      <a href="checkout.html">Check out</a>
-      <a href="contact.html">Help</a>
-      <a href="register.html">Sign up</a>
-    </div>
-    <div class="app">
-      <h3>Our App</h3>
-      <p>Download it now from</p>
-      <div class="install">
-        <img src="../materials/play.jpg" alt="google play">
-        <img src="../materials/app.jpg" alt="app store">
+      <div class="copyrights">
+        © 2025 Ecobazar. All rights reserved.
       </div>
-      <p>Multiple secured payment</p>
-      <img src="../materials/pay.png" alt="payment">
+    </footer>
+    <div class="scroll-up">
+      <a href="#top">
+        <i class="fa-solid fa-arrow-up"></i>
+      </a>
     </div>
-    <div class="copyrights">
-      © 2025 Ecobazar. All rights reserved.
-    </div>
-  </footer>
-  <div class="scroll-up">
-    <a href="#top">
-      <i class="fa-solid fa-arrow-up"></i>
-    </a>
-  </div>
 
-  <!-- Script -->
-  <script type="module" src="../JS/main.js"></script>
-  <script src="../JS/login.js"></script>
+    <!-- Script -->
+    <script type="module" src="../JS/main.js"></script>
+    <script type="module">
 
-</body>
+      import { togglePass, validateEmail } from '../JS/helpers.js';
 
+      const emailInput = document.getElementById("email");
+      const passInput = document.getElementById("password");
+      const form = document.getElementById("login-form");
+      const passIcon = document.querySelector(".pass-icon");
+
+      form?.addEventListener("submit", (e) => {
+        e.preventDefault();
+        [emailInput, passInput].forEach(input => {
+          if (input.value.trim() == '') 
+            document.querySelector('.blank-error').classList.add('show');
+          else document.querySelector('.blank-error').classList.remove('show');
+          
+          if (input.type === 'email' && !validateEmail(input.value))
+            document.querySelector('.invalid-email').classList.add('show');
+          else document.querySelector('.invalid-email').classList.remove('show');
+  
+          if (input.type === 'password' && input.value && input.value.length < 12)
+            document.querySelector('.invalid-length').classList.add('show');
+          else document.querySelector('.invalid-length').classList.remove('show');
+          
+        });
+
+        let alerts = document.querySelectorAll(".invalid.show");
+        let loginError = Boolean("<?=(isset($error))? true : false?>");
+        if (!alerts.length) {
+          form.submit();
+        }
+      });
+
+      passIcon?.addEventListener("click", () => togglePass(passIcon));
+    </script>
+  </body>
 </html>
 

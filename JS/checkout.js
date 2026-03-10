@@ -72,7 +72,7 @@ window.addEventListener('storage', function (event) {
 
 // Payment
 const cardNumberInput = document.getElementById("card-number");
-cardNumberInput.addEventListener("keyup", (e) => {
+cardNumberInput?.addEventListener("keyup", (e) => {
     let input = e.currentTarget.value;
     let numbers = input.replace(/\s/g, "");
     let isValidLength = numbers.length < 16 && numbers.length > 0;
@@ -81,7 +81,7 @@ cardNumberInput.addEventListener("keyup", (e) => {
     }
 })
 
-document.querySelector(".buttonCheckout").addEventListener("click", (e) => {
+document.querySelector(".buttonCheckout")?.addEventListener("click", (e) => {
     if (!checkCard()) {
         e.preventDefault();
     } else 
@@ -130,13 +130,13 @@ const methods = document.querySelectorAll("input[type='radio']");
 const cardPaymentMenu = document.querySelector(".card-payment-menu");
 const confirmBtn = document.querySelector(".cash-payment-btn");
 
-confirmBtn.addEventListener("click", () =>  {
+confirmBtn?.addEventListener("click", () =>  {
     alert("Order Confirmed");
     window.location.reload();
 });
 
-methods.forEach(method => {
-    method.addEventListener("change", (e) => {
+methods?.forEach(method => {
+    method?.addEventListener("change", (e) => {
         let paymentMethod = e.currentTarget.id;
         if (paymentMethod === "pay-card") {
             cardPaymentMenu.style.display = "block";

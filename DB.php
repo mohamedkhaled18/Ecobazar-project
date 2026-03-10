@@ -1,6 +1,6 @@
 <?php
 
-    class SqlConnection {
+    class DB {
         private $conn;
         private $result;
         private $dbName;
@@ -10,16 +10,21 @@
         }
 
         public function connect() {
+            if ($this->conn) {
+                return $this->conn;
+            }
+
             $this->conn = mysqli_connect("localhost", "root", "", $this->dbName);
             if (!$this->conn) {
                 die("Connection Failed: ". mysqli_connect_error());
+            } else {
+                return $this->conn;
             }
-            return $this->conn;
         }
 
         public function query($query) {
             if (empty($query) || !isset($query)) {
-                throw new Exception("This query is invalid");
+                die("This query is invalid");
                 exit();
             }
             $this->result = mysqli_query($this->conn, $query);
@@ -28,20 +33,24 @@
 
         public function insert(string $table, array $fields, array $values) {
             if (empty($table) || !isset($table)) {
-                throw new Exception("You should specify the table");
+                die("You should specify the table");
             } else if (count($fields) === 0 || count($values) === 0) {
-                throw new Exception("Please type the fields and values");
+                die("Please type the fields and values");
             } else {
+                $values = array_map(fn($value) => is_string($value) ? "'$value'" : $value , $values);
                 $fields = implode(", ", $fields);
-                $values = implode(", ", $values);
+                $values = implode(", ", $values);                
                 $query = "INSERT INTO $table($fields) VALUES($values)";
-                return $this->query($query);
+                if (!$this->query($query)) {
+                    throw new mysqli_sql_exception();
+                }                
             }
         }
-
+        
         public function select(string $table, $where = '') {
             if (empty($table) || !isset($table)) {
-                throw new Exception("You should specify the table");
+                // die("You should specify the table");
+                return null;
             } else {
                 $query = "SELECT * from $table ";
                 if (!empty($where)) {
@@ -52,6 +61,7 @@
         }
 
         public function close() {
-            mysqli_close($this->conn);
+            if ($this->conn)
+                mysqli_close($this->conn);
         }
     }

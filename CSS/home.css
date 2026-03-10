@@ -172,15 +172,6 @@
   color: var(--primary-color);
 }
 
-
-.prodfield {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  place-items: center;
-  gap: 30px 20px;
-  padding-top: 2rem;
-}
-
 .prod {
   width: 100%;
   padding: 10px 15px 10px 15px;

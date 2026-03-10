@@ -2,12 +2,12 @@
 import { Cart } from './Cart.js';
 import { addDataToHTML, playAddSound, loadProductsData } from './helpers.js';
 
-const products = await loadProductsData();
+const spinner = document.querySelector(".spinner")
+
+
 const itemsContainer = document.querySelector('.cart-list .items');
 const listCart = new Cart();
 listCart.renderCartHTML(itemsContainer);
-addDataToHTML();
-
 function addCart(btn, idProduct) {
     if (listCart[idProduct] == null) {
         listCart[idProduct] = {
@@ -44,14 +44,21 @@ function changeQuantity(idProduct, type) {
     updateCartHTML();
 }
 
-function insertData() {
+async function insertData() {
     const storedCart = localStorage.getItem('listCart');
     if (storedCart) {
         listCart = JSON.parse(storedCart);
         totalQuantity = Object.values(listCart).reduce((total, product) => total + product.quantity, 0);
         updateCartHTML();
     }
+    try {
+    const products = await loadProductsData();
     addDataToHTML('home');
+} catch(e) {
+
+} finally {
+    spinner.style.display = "none"
+}
 }
 
 
@@ -65,12 +72,12 @@ const close = document.querySelector(".cart-list .top-section .close");
 const darkBackground = document.querySelector(".dark-background");
 
 let cart = document.querySelector('.cart');
-cart.addEventListener("click", () => {
+cart?.addEventListener("click", () => {
     cartList.style.right = "0";
     darkBackground.style.display = "block";
 });
 
-close.addEventListener("click", () => {
+close?.addEventListener("click", () => {
     cartList.style.right = "-60%";
     darkBackground.style.display = "none";
 });
@@ -78,7 +85,7 @@ close.addEventListener("click", () => {
 
 // Search
 const searchInput = document.querySelector(".search");
-searchInput.addEventListener("keyup", search);
+searchInput?.addEventListener("keyup", search);
 
 function search() {
     const input = document.querySelector('.search').value.toUpperCase();
@@ -122,3 +129,22 @@ scrollIcon.addEventListener("click", () => {
         behavior: "smooth",
     })
 });
+
+const pagesSection = document.querySelector(".Pages-section");
+
+document.querySelector("#open-menu-bar")?.addEventListener("click", () => {
+    document.querySelector(".menu-bar").style.width = "100%";
+})
+
+document.querySelector(".close-menu-bar-btn")?.addEventListener("click",  () => {
+    document.querySelector(".menu-bar").style.width = "0%";
+})
+
+window.addEventListener('resize', (e) => {
+    if (window.innerWidth <= 900) {
+        pagesSection.classList.add("menu-bar");
+    }
+    else 
+        pagesSection.classList.remove("menu-bar");
+}
+)
