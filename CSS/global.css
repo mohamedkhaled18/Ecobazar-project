@@ -99,6 +99,10 @@ header nav ul {
   display: flex;
   flex-grow: 1;
   gap: 15px;
+
+  .pages-section {
+    overflow: hidden;
+  }
 }
 
 
@@ -359,14 +363,17 @@ header nav .pages-section ul {
 .cart-list {
   position: fixed;
   top: 0;
-  right: -60%;
-  padding: 15px;
+  right: 0;
   background: var(--body-background);
   width: 0;
-  /*450px*/
   height: 100%;
   transition: 1s;
   z-index: 5000;
+  overflow: hidden;
+  transition: 0.4s;
+  * {
+    opacity: 0;
+  }
 }
 
 .cart-list .top-section {
@@ -392,6 +399,14 @@ header nav .pages-section ul {
   position: relative;
   height: calc(100vh - (66.4px + 88px));
   overflow: scroll;
+}
+
+.show-cart {
+  width: 450px;
+  padding: 15px;
+  * {
+    opacity: 1;
+  }
 }
 
 
@@ -645,9 +660,8 @@ p.error {
   width: 100px;
   height: 100px;
   animation: spin 1s linear infinite;
-  margin: 20px auto;
-  position: fixed;
-  top: 50%;
+  position: relative;
+  top: 60px;
   left: 50%;
 }
 

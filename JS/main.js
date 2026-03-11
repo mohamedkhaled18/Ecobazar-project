@@ -2,83 +2,24 @@
 import { Cart } from './Cart.js';
 import { addDataToHTML, playAddSound, loadProductsData } from './helpers.js';
 
-const spinner = document.querySelector(".spinner")
+const currentPage = location.href.match(/\w+.html/).toString().replace(".html", "");
+
+addDataToHTML(currentPage);
 
 
-const itemsContainer = document.querySelector('.cart-list .items');
-const listCart = new Cart();
-listCart.renderCartHTML(itemsContainer);
-function addCart(btn, idProduct) {
-    if (listCart[idProduct] == null) {
-        listCart[idProduct] = {
-            ...products.find(product => product.id === idProduct),
-            quantity: 1
-        };
-    } else {
-        listCart[idProduct].quantity += 1;
-    }
-    totalQuantity++;
-    cart.saveCart();
-    playAddSound(btn);
-}
+// window.addEventListener('load', insertData);
+// window.addEventListener('storage', insertData);
 
+const cart = document.querySelector('.cart');
+const close = document.querySelector('#close-cart-btn');
 
-function updateCartHTML() {
-    let itemsContainer = document.querySelector('.cart-list .items');
-    listCart.renderCartHTML(itemsContainer);
-    document.querySelector('.cart .cart-length').innerText = totalQuantity;
-}
-
-function changeQuantity(idProduct, type) {
-    if (type === '+') {
-        listCart[idProduct].quantity++;
-        totalQuantity++;
-    } else if (type === '-') {
-        listCart[idProduct].quantity--;
-        totalQuantity--;
-        if (listCart[idProduct].quantity <= 0) {
-            delete listCart[idProduct];
-        }
-    }
-    cart.saveCart();
-    updateCartHTML();
-}
-
-async function insertData() {
-    const storedCart = localStorage.getItem('listCart');
-    if (storedCart) {
-        listCart = JSON.parse(storedCart);
-        totalQuantity = Object.values(listCart).reduce((total, product) => total + product.quantity, 0);
-        updateCartHTML();
-    }
-    try {
-    const products = await loadProductsData();
-    addDataToHTML('home');
-} catch(e) {
-
-} finally {
-    spinner.style.display = "none"
-}
-}
-
-
-window.addEventListener('load', insertData);
-window.addEventListener('storage', insertData);
-
-
-
-const cartList = document.querySelector(".cart-list");
-const close = document.querySelector(".cart-list .top-section .close");
-const darkBackground = document.querySelector(".dark-background");
-
-let cart = document.querySelector('.cart');
 cart?.addEventListener("click", () => {
-    cartList.style.right = "0";
+    cartList.classList.add("show-cart");
     darkBackground.style.display = "block";
 });
 
 close?.addEventListener("click", () => {
-    cartList.style.right = "-60%";
+    cartList.classList.remove("show-cart");
     darkBackground.style.display = "none";
 });
 
@@ -114,10 +55,45 @@ function search() {
     }
 }
 
-// Scroll To Up
+
+
+// Cart Section
+const listCart = new Cart();
+
+const cartList = document.querySelector(".cart-list");
+// const close = document.querySelector(".cart-list .top-section .close");
+const darkBackground = document.querySelector(".dark-background");
+
+
+const products = await loadProductsData();
+const itemsContainer = document.querySelector('.cart-list .items');
+
+document.querySelectorAll("#add-btn").forEach(addBtn => {
+    addBtn.addEventListener("click", (e) => {
+
+        const btnElement = e.target;
+        const id = btnElement.parentElement.id
+
+        products.forEach(product => {
+            if (product.id == id) {
+                listCart.addProduct(product, id);
+                listCart.saveCart(product);
+            }
+        })
+        // playAddSound(pr)
+        listCart.renderCartHTML(itemsContainer, document.querySelector(".cart-length"));
+    });
+})
+
+
+listCart.renderCartHTML(itemsContainer, document.querySelector(".cart-length"));
+
+
+
+// Window EventListeners Section
+
 let scrollIcon = document.querySelector(".scroll-up");
 window.addEventListener("scroll", () => {
-    // Showing The Icon
     if (window.scrollY >= 1200)
         scrollIcon.classList.add("show")
     else scrollIcon.classList.remove("show");
@@ -130,13 +106,14 @@ scrollIcon.addEventListener("click", () => {
     })
 });
 
+
 const pagesSection = document.querySelector(".Pages-section");
 
 document.querySelector("#open-menu-bar")?.addEventListener("click", () => {
     document.querySelector(".menu-bar").style.width = "100%";
 })
 
-document.querySelector(".close-menu-bar-btn")?.addEventListener("click",  () => {
+document.querySelector(".close-menu-bar-btn")?.addEventListener("click", () => {
     document.querySelector(".menu-bar").style.width = "0%";
 })
 
@@ -144,7 +121,7 @@ window.addEventListener('resize', (e) => {
     if (window.innerWidth <= 900) {
         pagesSection.classList.add("menu-bar");
     }
-    else 
+    else
         pagesSection.classList.remove("menu-bar");
 }
 )

@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="./CSS/single_products.css">
   <title>Ecobazar</title>
   <link rel="shortcut icon" href="./materials/Screenshot 2025-05-03 235020.png" type="image/x-icon">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> -->
 </head>
 
 <body>
@@ -162,7 +162,7 @@
 
             <div class="cart">
               <a href="#">
-                <i class="fa-solid fa-cart-shopping"></i>
+                <p style="font-size: 2rem;">🛒</p>
               </a>
               <span class="cart-length">0</span>
             </div>
@@ -176,9 +176,9 @@
   <div class="dark-background"></div>
   <div class="cart-list">
     <div class="top-section">
-      <h2>Cart</h2>
+      <h1>Cart</h1>
       <div class="close">
-        <i class="fa-solid fa-xmark"></i>
+        <p id="close-cart-btn">❌</p>
       </div>
     </div>
     <div class="container-items" style="position: relative;">
@@ -233,8 +233,9 @@
   <section class="products">
     <h2 style="font-size: xx-large;">Featured Products</h2>
     <p style="font-size: x-large;">Deliciously Wholesome Choices</p>
-    <div class="prodfield">
+      <div id="loading" class="spinner"></div>
 
+    <div class="prodfield">
     </div>
   </section>
   <div class="more">
@@ -357,7 +358,6 @@
       © 2025 Ecobazar. All rights reserved.
     </div>
   </footer>
-  <div id="loading" class="spinner"></div>
 
   <div class="scroll-up">
     <a>
