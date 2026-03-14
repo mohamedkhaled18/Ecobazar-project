@@ -1,30 +1,52 @@
 
 import { Cart } from './Cart.js';
-import { addDataToHTML, playAddSound, loadProductsData } from './helpers.js';
+import { addDataToHTML, checkAdding, loadProductsData } from './helpers.js';
 
-const currentPage = location.href.match(/\w+.html/).toString().replace(".html", "");
+const cartList = document.querySelector(".cart-list");
+const darkBackground = document.querySelector(".dark-background");
+const itemsContainer = document.querySelector('.cart-list .items');
 
-addDataToHTML(currentPage);
+export const listCart = new Cart();
+const products = await loadProductsData('index');
 
+await addDataToHTML('index');
 
-// window.addEventListener('load', insertData);
-// window.addEventListener('storage', insertData);
+function addProducts() {
+    const addBtns = document.querySelectorAll("#add-btn");
+    addBtns.forEach(addBtn => {
 
-const cart = document.querySelector('.cart');
-const close = document.querySelector('#close-cart-btn');
+        addBtn.addEventListener("click", (e) => {
+            const btnElement = e.target;
+            const id = btnElement.parentElement.id;
 
-cart?.addEventListener("click", () => {
-    cartList.classList.add("show-cart");
-    darkBackground.style.display = "block";
+            products.forEach(product => {
+                if (product.id == id) {
+                    listCart.addProduct(product, id);
+                    listCart.saveCart();
+                }
+            });
+            checkAdding(btnElement);
+            listCart.renderCartHTML(itemsContainer, document.querySelector(".cart-length"));
+        });
+    })
+    listCart.renderCartHTML(itemsContainer, document.querySelector(".cart-length"));
+}
+
+itemsContainer.addEventListener('click', (e) => {
+    const id = e.target.closest('.item')?.id;
+    if (e.target.parentElement.classList.contains('quantity')) {
+        listCart.changeCart(id, e.target.dataset.quantityChange);
+    } else if (e.target.classList.contains('cart-delete-btn')) {
+        listCart.removeProduct(id);
+    }
+    listCart.saveCart();
+    listCart.renderCartHTML(itemsContainer, document.querySelector(".cart-length"));
 });
 
-close?.addEventListener("click", () => {
-    cartList.classList.remove("show-cart");
-    darkBackground.style.display = "none";
-});
+addProducts();
+window.addEventListener('storage', addProducts);
 
 
-// Search
 const searchInput = document.querySelector(".search");
 searchInput?.addEventListener("keyup", search);
 
@@ -56,41 +78,7 @@ function search() {
 }
 
 
-
-// Cart Section
-const listCart = new Cart();
-
-const cartList = document.querySelector(".cart-list");
-// const close = document.querySelector(".cart-list .top-section .close");
-const darkBackground = document.querySelector(".dark-background");
-
-
-const products = await loadProductsData();
-const itemsContainer = document.querySelector('.cart-list .items');
-
-document.querySelectorAll("#add-btn").forEach(addBtn => {
-    addBtn.addEventListener("click", (e) => {
-
-        const btnElement = e.target;
-        const id = btnElement.parentElement.id
-
-        products.forEach(product => {
-            if (product.id == id) {
-                listCart.addProduct(product, id);
-                listCart.saveCart(product);
-            }
-        })
-        // playAddSound(pr)
-        listCart.renderCartHTML(itemsContainer, document.querySelector(".cart-length"));
-    });
-})
-
-
-listCart.renderCartHTML(itemsContainer, document.querySelector(".cart-length"));
-
-
-
-// Window EventListeners Section
+// EventListeners Section
 
 let scrollIcon = document.querySelector(".scroll-up");
 window.addEventListener("scroll", () => {
@@ -114,14 +102,26 @@ document.querySelector("#open-menu-bar")?.addEventListener("click", () => {
 })
 
 document.querySelector(".close-menu-bar-btn")?.addEventListener("click", () => {
-    document.querySelector(".menu-bar").style.width = "0%";
+    document.querySelector(".menu-bar").style.width = "0";
+    // pagesSection.style.width = "auto";
 })
 
 window.addEventListener('resize', (e) => {
-    if (window.innerWidth <= 900) {
-        pagesSection.classList.add("menu-bar");
-    }
-    else
-        pagesSection.classList.remove("menu-bar");
-}
-)
+    if (window.innerWidth <= 900) pagesSection.classList.add("menu-bar");
+    else pagesSection.classList.remove("menu-bar");
+});
+
+const cart = document.querySelector('.cart');
+const close = document.querySelector('#close-cart-btn');
+
+cart?.addEventListener("click", () => {
+    cartList.classList.add("show-cart");
+    darkBackground.style.display = "block";
+});
+
+close?.addEventListener("click", () => {
+    cartList.classList.remove("show-cart");
+    darkBackground.style.display = "none";
+});
+
+

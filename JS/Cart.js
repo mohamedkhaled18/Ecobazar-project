@@ -4,14 +4,32 @@ export class Cart {
 
     constructor() {
         this.cartList = this.loadCart();
+        this.totalQuantity = this.cartList ?? 0;
     }
 
     loadCart() {
-        return Storage.get("cartList") ?? [];
+        this.cartList = [];
+        if (!Storage.get('cartList')) {
+            Storage.set('cartList', this.cartList);
+            return this.cartList;
+        }
+        else return this.cartList = Storage.get('cartList');
     }
 
     getTotalQuantity() {
-        return this.cartList.length;
+        return this.cartList.reduce((sum, item) => sum + (item.quantity ?? 0), 0);
+    }
+
+    getCartProducts() {
+        return this.cartList;
+    }
+
+    changeCart(id, changeType) {
+        this.cartList.forEach(product => {
+            if (product.id == id) {
+                product.quantity = Math.max(1, product.quantity + (changeType == '+' ? 1 : -1));                
+            }
+        });
     }
 
     addProduct(product, id) {
@@ -23,10 +41,17 @@ export class Cart {
         }
         product['quantity'] = 1;
         this.cartList.push(product);
-        this.totalQuantity++;
+    }
+    
+    removeProduct(id) {
+        this.cartList.forEach(product => {
+            if (product.id == id) {
+                this.cartList.splice(this.cartList.indexOf(product), 1);
+            }
+        });
     }
 
-    saveCart(product) {
+    saveCart() {
         Storage.set('cartList', this.cartList);
     }
 
@@ -42,21 +67,21 @@ export class Cart {
             this.cartList.forEach(product => {
                 const imagePath = currentPage === 'home' ? product.image.replace('.', '') : product.image;
                 container.innerHTML += `
-                <div class="item">
+                <div class="item" id="${product.id}">
                     <div class="item-image">
                         <img src="${imagePath}" alt="product-image" />
                     </div>
                     <div class="content">
                         <div class="product-name">${product.name}</div>
                         <div class="product-price">$${product.price.toFixed(2)} / 1 product</div>
-                        <div class="product-total-price">$${product.price.toFixed(2) * product.quantity ?? 1}</div>
+                        <div class="product-total-price">$${(product.price * product.quantity ?? 1).toFixed(2)}</div>
                     </div>
                     <div class="quantity">
-                        <span onclick="changeQuantity(${product.id}, '-')">-</span>
+                        <span data-quantity-change='-'>-</span>
                         <span class="value">${product.quantity ?? 0}</span>
-                        <span onclick="changeQuantity(${product.id}, '+')">+</span>
+                        <span data-quantity-change='+'>+</span>
                     </div>  
-                    <button style="cursor:pointer; background: transparent; border: 0;" id="delete">❌</button>
+                    <button style="cursor:pointer; background: transparent; border: 0;" class="cart-delete-btn">❌</button>
                 </div>`
             });
         }

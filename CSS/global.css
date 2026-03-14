@@ -137,9 +137,10 @@ nav ul li a:hover {
   outline: 0;
   border: 0;
   font-size: 16px;
-  padding: 5px 0;
+  padding: 6px 10px;
   background-color: var(--body-background);
   color: var(--primary-color);
+  width: 100%;
 }
 
 .search-box input::placeholder {
@@ -158,6 +159,14 @@ nav ul li a:hover {
   box-shadow: 0 0 10px 10px rgb(0 0 0/ .2);
   max-height: 398px;
   overflow-y: scroll;
+}
+
+.search-box.search-box-menu-bar {
+  display: none;
+  background: white;
+  margin-inline: 2rem;
+  overflow: hidden;
+  margin: 0 2rem 3rem;
 }
 
 .prods-search.active {
@@ -264,6 +273,7 @@ header nav .pages-section ul {
   box-shadow: none;
   width: 90%;
   color: var(--primary-color);
+
 }
 
 .menu-bar {
@@ -371,6 +381,7 @@ header nav .pages-section ul {
   z-index: 5000;
   overflow: hidden;
   transition: 0.4s;
+
   * {
     opacity: 0;
   }
@@ -404,6 +415,7 @@ header nav .pages-section ul {
 .show-cart {
   width: 450px;
   padding: 15px;
+
   * {
     opacity: 1;
   }
@@ -612,6 +624,14 @@ footer .copyrights {
 
   .login-image {
     display: none;
+  }
+
+  .search-box {
+    display: none;
+  }
+
+  .search-box.search-box-menu-bar {
+    display: block;
   }
 
   header nav {

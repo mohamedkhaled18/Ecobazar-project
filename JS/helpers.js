@@ -12,9 +12,9 @@ export function validateEmail(email) {
     return emailRegex.test(email.trim());
 }
 
-export async function loadProductsData() {
+export async function loadProductsData(currentPage = 'index') {
     try {
-        const response = await fetch('./products.json');
+        const response = await fetch(`${(currentPage === 'index') ? '.' : '..'}/products.json`);
         const data = await response.json();
         return data;
     } catch (e) {
@@ -22,16 +22,16 @@ export async function loadProductsData() {
     }
 }
 
-export async function addDataToHTML(currentPage = "home") {
+export async function addDataToHTML(currentPage = "index") {
     const spinner = document.getElementById('loading');
     spinner.style.display = "block";
     try {
-        const products = await loadProductsData();
+        const products = await loadProductsData(currentPage);
         let listProductHTML = document.querySelector('.prodfield');
         if (!listProductHTML)
             return;
 
-        let Products = currentPage === "home" ? Object.values(products).slice(0, 8) : products;
+        let Products = currentPage === "index" ? Object.values(products).slice(0, 8) : products;
         listProductHTML.innerHTML = '';
 
         Products.forEach(product => {
@@ -39,16 +39,16 @@ export async function addDataToHTML(currentPage = "home") {
             const discountPercentage = Math.round(product.discount * 100);
             let newProduct = document.createElement('div');
 
-
             newProduct.classList.add('prod');
             newProduct.id = product.id;
             newProduct.innerHTML = `
-                <img src="${currentPage === "home" ? product.image.replace(".", "")
-                    : product.image
+                <img src="${
+                    (currentPage === "index") ? (product.image.replace('.', ''))
+                    : (product.image)
                 }">
             <div class="decsription">
-                <a href="${currentPage === "home" ? "./Pages/" + product.linkPage
-                    : product.linkPage
+                <a href="${(currentPage === "index") ? ("./Pages/" + product.linkPage)
+                    : (product.linkPage)
                 }">${product.name}</a>
                 <div class="stars">
                     <span>★★★★★</span>
@@ -66,6 +66,7 @@ export async function addDataToHTML(currentPage = "home") {
                     `;
             listProductHTML.appendChild(newProduct);
         });
+        return products;
     } catch (e) {
         console.error(e);
     } finally {
@@ -73,9 +74,9 @@ export async function addDataToHTML(currentPage = "home") {
     }
 }
 
-export function playAddSound(addBtn) {
+export function checkAdding(addBtn) {
     const addedSound = document.getElementById("added-sound");
-    addedSound.play();
+    // addedSound.play();
     addBtn.innerHTML = `Product Added`;
     setTimeout(() => addBtn.innerHTML = `Add To Cart`, 1000);
 }

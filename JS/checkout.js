@@ -1,18 +1,5 @@
-let listCart = [];
+import { listCart } from "./main.js";
 
-function loadCart() {
-    const localCart = localStorage.getItem('listCart');
-    if (localCart) {
-        listCart = Object.values(JSON.parse(localCart));
-        return;
-    }
-
-    const cookieValue = document.cookie;
-
-    if (cookieValue) {
-        listCart = Object.values(JSON.parse(cookieValue.split('=')[1]));
-    }
-}
 
 function displayCartItems() {
     const listCartHTML = document.querySelector('.leftCart .list');
@@ -29,8 +16,10 @@ function displayCartItems() {
     let totalQuantity = 0;
     let totalPrice = 0;
 
-    if (listCart && listCart.length > 0) {
-        listCart.forEach(product => {
+    const products = listCart.loadCart();
+
+    if (products && products.length > 0) {
+        products.forEach(product => {
             if (product) {
                 const newCart = document.createElement('div');
                 newCart.classList.add('item');
@@ -58,16 +47,11 @@ function displayCartItems() {
     checkoutTotalPriceHTML.innerText = `$${totalPrice.toFixed(2)}`;
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    loadCart();
-    displayCartItems();
-});
+document.addEventListener('DOMContentLoaded', displayCartItems);
 
-window.addEventListener('storage', function (event) {
-    if (event.key === 'listCart') {
-        loadCart();
+window.addEventListener('storage', (event) => {
+    if (event.key === 'cartList') 
         displayCartItems();
-    }
 });
 
 // Payment

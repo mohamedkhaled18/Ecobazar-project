@@ -151,4 +151,15 @@ html {
   margin-top: 3px;
 }
 
+@media (width <= 900px) {
+  .section,
+  .section:nth-of-type(even) {
+    flex-direction: column;
+    padding-inline: 0;
+  }
 
+  .section .text,
+  .section .info {
+    padding-inline: 1rem;
+  }
+}
