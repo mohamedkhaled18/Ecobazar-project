@@ -8,15 +8,14 @@
   <link rel="stylesheet" href="./CSS/single_products.css">
   <title>Ecobazar</title>
   <link rel="shortcut icon" href="./materials/Screenshot 2025-05-03 235020.png" type="image/x-icon">
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
   <audio id="added-sound" src="./materials/ding-101492 (mp3cut.net).mp3"></audio>
 
-  <!-- Header -->
+
   <header>
-    <!-- Logo -->
     <div class="logo">
       <a href="#">
         <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -27,243 +26,39 @@
         <span>Ecobazar</span>
       </a>
     </div>
-    <!-- Naigation Bar -->
+
     <nav>
-      <!-- Search Box -->
       <div class="search-box">
         <div class="search-icon">
           <i class="fa-solid fa-magnifying-glass"></i>
         </div>
-        <input type="text" placeholder="search" class="search" onkeyup="search()">
+        <input type="text" placeholder="search" class="search" />
         <div class="prods-search">
-          <div class="prodsresult">
-            <a href="./Pages/banana.html" class="item">
-              <img src="./materials/Yellow-Banana-1-Kg.jpg">
-              <div class="prod-details">
-                Fresh banana
-              </div>
-            </a>
-          </div>
-          <div class="prodsresult">
-            <a href="./Pages/cucmber.html" class="item">
-              <img src="./materials/cucmber.jpg">
-              <div class="prod-details">
-                Fresh cucmber
-              </div>
-            </a>
-          </div>
-          <div class="prodsresult">
-            <a href="./Pages/mixedfruits.html" class="item">
-              <img src="./materials/mixedfruits.jpg">
-              <div class="prod-details">
-                Mixed fruits
-              </div>
-            </a>
-          </div>
-          <div class="prodsresult">
-            <a href="./Pages/frozenberries.html" class="item">
-              <img src="./materials/frozenberries.jpg">
-              <div class="prod-details">
-                Frozen berries
-              </div>
-            </a>
-          </div>
-          <div class="prodsresult">
-            <a href="./Pages/cannedpineapple.html" class="item">
-              <img src="./materials/cannedpineapple.jpg">
-              <div class="prod-details">
-                Canned pineapple
-              </div>
-            </a>
-          </div>
-          <div class="prodsresult">
-            <a href="./Pages/orange.html" class="item">
-              <img src="./materials/Orange-Valencia-1-Kg.jpg">
-              <div class="prod-details">
-                Fresh orange
-              </div>
-            </a>
-          </div>
-          <div class="prodsresult">
-            <a href="./Pages/straw.html" class="item">
-              <img src="./materials/straww.png">
-              <div class="prod-details">
-                Fresh strawberry
-              </div>
-            </a>
-          </div>
-          <div class="prodsresult">
-            <a href="./Pages/tomato.html" class="item">
-              <img src="./materials/tomato.jpg">
-              <div class="prod-details">
-                Fresh tomato
-              </div>
-            </a>
-          </div>
-          <div class="prodsresult">
-            <a href="./Pages/onions.html" class="item">
-              <img src="./materials/onions.jpg">
-              <div class="prod-details">
-                Fresh onions
-              </div>
-            </a>
-          </div>
-          <div class="prodsresult">
-            <a href="./Pages/pepper.html" class="item">
-              <img src="./materials/pepper.jpeg">
-              <div class="prod-details">
-                Fresh pepper
-              </div>
-            </a>
-          </div>
-          <div class="prodsresult">
-            <a href="./Pages/lettuce.html" class="item">
-              <img src="./materials/lettuce.jpg">
-              <div class="prod-details">
-                Fresh lettuce
-              </div>
-            </a>
-          </div>
-          <div class="prodsresult">
-            <a href="./Pages/driedfruits.html" class="item">
-              <img src="./materials/dried fruits.jpg">
-              <div class="prod-details">
-                Dried fruits
-              </div>
-            </a>
-          </div>
+
         </div>
       </div>
-      <div class="Pages-section">
-        <div class="search-box search-box-menu-bar">
-          <div class="search-icon">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </div>
-          <input type="text" placeholder="search" class="search" onkeyup="search()" />
-          <div class="prods-search">
-            <div class="prodsresult">
-              <a href="./Pages/banana.html" class="item">
-                <img src="./materials/Yellow-Banana-1-Kg.jpg">
-                <div class="prod-details">
-                  Fresh banana
-                </div>
-              </a>
-            </div>
-            <div class="prodsresult">
-              <a href="./Pages/cucmber.html" class="item">
-                <img src="./materials/cucmber.jpg">
-                <div class="prod-details">
-                  Fresh cucmber
-                </div>
-              </a>
-            </div>
-            <div class="prodsresult">
-              <a href="./Pages/mixedfruits.html" class="item">
-                <img src="./materials/mixedfruits.jpg">
-                <div class="prod-details">
-                  Mixed fruits
-                </div>
-              </a>
-            </div>
-            <div class="prodsresult">
-              <a href="./Pages/frozenberries.html" class="item">
-                <img src="./materials/frozenberries.jpg">
-                <div class="prod-details">
-                  Frozen berries
-                </div>
-              </a>
-            </div>
-            <div class="prodsresult">
-              <a href="./Pages/cannedpineapple.html" class="item">
-                <img src="./materials/cannedpineapple.jpg">
-                <div class="prod-details">
-                  Canned pineapple
-                </div>
-              </a>
-            </div>
-            <div class="prodsresult">
-              <a href="./Pages/orange.html" class="item">
-                <img src="./materials/Orange-Valencia-1-Kg.jpg">
-                <div class="prod-details">
-                  Fresh orange
-                </div>
-              </a>
-            </div>
-            <div class="prodsresult">
-              <a href="./Pages/straw.html" class="item">
-                <img src="./materials/straww.png">
-                <div class="prod-details">
-                  Fresh strawberry
-                </div>
-              </a>
-            </div>
-            <div class="prodsresult">
-              <a href="./Pages/tomato.html" class="item">
-                <img src="./materials/tomato.jpg">
-                <div class="prod-details">
-                  Fresh tomato
-                </div>
-              </a>
-            </div>
-            <div class="prodsresult">
-              <a href="./Pages/onions.html" class="item">
-                <img src="./materials/onions.jpg">
-                <div class="prod-details">
-                  Fresh onions
-                </div>
-              </a>
-            </div>
-            <div class="prodsresult">
-              <a href="./Pages/pepper.html" class="item">
-                <img src="./materials/pepper.jpeg">
-                <div class="prod-details">
-                  Fresh pepper
-                </div>
-              </a>
-            </div>
-            <div class="prodsresult">
-              <a href="./Pages/lettuce.html" class="item">
-                <img src="./materials/lettuce.jpg">
-                <div class="prod-details">
-                  Fresh lettuce
-                </div>
-              </a>
-            </div>
-            <div class="prodsresult">
-              <a href="./Pages/driedfruits.html" class="item">
-                <img src="./materials/dried fruits.jpg">
-                <div class="prod-details">
-                  Dried fruits
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="close-menu-bar-btn">❌</div>
-        <ul>
-          <li><a class="active" href="#">HOME</a></li>
-          <li><a href="./Pages/shopping.html">SHOP</a></li>
-          <li><a href="./Pages/about_us.html">ABOUT US</a></li>
-          <li><a href="./Pages/contact.html">CONTACT</a></li>
-        </ul>
-      </div>
+      <ul>
+        <li><a class="active" href="#">HOME</a></li>
+        <li><a href="./Pages/shopping.html">SHOP</a></li>
+        <li><a href="./Pages/about_us.html">ABOUT US</a></li>
+        <li><a href="./Pages/contact.html">CONTACT</a></li>
+      </ul>
       <div id="open-menu-bar">
         <span></span><span></span><span></span>
       </div>
       <div class="sign-cart">
         <ul>
           <li>
-            <a href="./Pages/login.php">
+            <a href="../login.php">
               <i class="fa-solid fa-right-to-bracket"></i>
             </a>
           </li>
           <li>
-            <a href="./Pages/register.php">
+            <a href="../register.php">
               <i class="fa-solid fa-user-plus"></i>
             </a>
           </li>
           <li>
-
             <div class="cart">
               <a href="#">
                 <p style="font-size: 2rem;">🛒</p>
@@ -276,7 +71,6 @@
     </nav>
   </header>
 
-  <!-- Cart List -->
   <div class="dark-background"></div>
   <div class="cart-list">
     <div class="top-section">
@@ -287,7 +81,7 @@
     </div>
     <div class="container-items" style="position: relative;">
       <div class="items">
-        
+
       </div>
     </div>
     <a href="./Pages/checkout.html" class="checkout">Checkout</a>
@@ -454,9 +248,11 @@
       <i class="fa-solid fa-arrow-up"></i>
     </a>
   </div>
-
-  <script type="module" src="./JS/main.js"></script>
-  <script type="module" src="./JS/checkout.js"></script>
+  <script type="module">
+    import { init } from 'http://localhost/Ecobazar-project/JS/main.js';
+    init('index');
+  </script>
+  <!-- <script type="module" src="./JS/checkout.js"></script> -->
 </body>
 
 </html>

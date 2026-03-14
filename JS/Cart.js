@@ -27,7 +27,7 @@ export class Cart {
     changeCart(id, changeType) {
         this.cartList.forEach(product => {
             if (product.id == id) {
-                product.quantity = Math.max(1, product.quantity + (changeType == '+' ? 1 : -1));                
+                product.quantity = Math.max(1, product.quantity + (changeType == '+' ? 1 : -1));
             }
         });
     }
@@ -42,7 +42,7 @@ export class Cart {
         product['quantity'] = 1;
         this.cartList.push(product);
     }
-    
+
     removeProduct(id) {
         this.cartList.forEach(product => {
             if (product.id == id) {
@@ -65,11 +65,10 @@ export class Cart {
             }
 
             this.cartList.forEach(product => {
-                const imagePath = currentPage === 'home' ? product.image.replace('.', '') : product.image;
                 container.innerHTML += `
                 <div class="item" id="${product.id}">
                     <div class="item-image">
-                        <img src="${imagePath}" alt="product-image" />
+                        <img src="${product.image}" alt="product-image" />
                     </div>
                     <div class="content">
                         <div class="product-name">${product.name}</div>

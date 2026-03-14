@@ -12,9 +12,9 @@ export function validateEmail(email) {
     return emailRegex.test(email.trim());
 }
 
-export async function loadProductsData(currentPage = 'index') {
+export async function loadProductsData() {
     try {
-        const response = await fetch(`${(currentPage === 'index') ? '.' : '..'}/products.json`);
+        const response = await fetch(`http://localhost/Ecobazar-project/products.json`);
         const data = await response.json();
         return data;
     } catch (e) {
@@ -42,10 +42,7 @@ export async function addDataToHTML(currentPage = "index") {
             newProduct.classList.add('prod');
             newProduct.id = product.id;
             newProduct.innerHTML = `
-                <img src="${
-                    (currentPage === "index") ? (product.image.replace('.', ''))
-                    : (product.image)
-                }">
+                <img src="${product.image}">
             <div class="decsription">
                 <a href="${(currentPage === "index") ? ("./Pages/" + product.linkPage)
                     : (product.linkPage)
@@ -90,3 +87,4 @@ export const Storage = {
         return JSON.parse(data);
     }
 }
+

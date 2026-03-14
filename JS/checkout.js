@@ -1,4 +1,4 @@
-import { listCart } from "./main.js";
+import { Storage } from "./helpers.js";
 
 
 function displayCartItems() {
@@ -16,8 +16,8 @@ function displayCartItems() {
     let totalQuantity = 0;
     let totalPrice = 0;
 
-    const products = listCart.loadCart();
-
+    const products = Storage.get('cartList');
+    
     if (products && products.length > 0) {
         products.forEach(product => {
             if (product) {
